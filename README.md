@@ -15,8 +15,3 @@ These two sides have no direct interaction. The platform serves several function
 - Providing an intuitive interface for crypto investors to invest USDC into the pool and redeem it on maturity date. 
 
 
-**Architecuture**
-
-![enter image description here](https://drive.google.com/file/d/1MK3djJTnSfhl3uaIEzrm537uDOurqcss/view?usp=drive_link)
-
-![enter image description here](https://drive.google.com/file/d/1fciNIa86sgHTK_CmLs7vxkaDH4PhMq1R/view?usp=drive_link)
