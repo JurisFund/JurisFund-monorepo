@@ -1,4 +1,4 @@
-JurisFund is a credit DeFi protocol backed by consumer pre-settlement funding. This protocol offers investors an opportunity to get exposure to a unique asset class, notable for its lack of correlation with broader market trends and its history of high returns.
+**JurisFund** is a credit DeFi protocol backed by consumer pre-settlement funding. This protocol offers investors an opportunity to get exposure to a unique asset class, notable for its lack of correlation with broader market trends and its history of high returns.
 
 Contrasting with existing real-world asset (RWA)-backed DeFi protocols, JurisFund does not rely on traditional assets like US Treasuries or income- or receivable-backed loans, which are common on platforms such as Centrifuge, Goldfinch, and Huma Finance. The latter, income- or receivable-backed loans, are particularly vulnerable to macro-economic fluctuations and disruptions. Goldfinch has faced challenges due to a lack of direct oversight in the underwriting and servicing of loans, which has caused incidents of bad debts from two pools, leading to a significant amount of default loans totaling 12 million USD.
 
