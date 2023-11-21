@@ -1,0 +1,26 @@
+.cache/
+.lighthouseci/
+.next/
+.swc/
+.turbo/
+coverage/
+dist/
+e2e-report/
+e2e-results/
+node_modules/
+out/
+storybook-static/
+.env
+.env.*
+!.env.example
+.eslintcache
+**/graph.svg
+analyze/
+
+# PWA files
+**/public/sw.js
+**/public/workbox-*.js
+**/public/worker-*.js
+**/public/sw.js.map
+**/public/workbox-*.js.map
+**/public/worker-*.js.map
