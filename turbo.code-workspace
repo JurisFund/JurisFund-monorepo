@@ -1,6 +1,6 @@
 {
   "folders": [
-    { "path": "apps/website-ssr", "name": "apps/website-ssr" },
+    { "path": "apps/jurisfund", "name": "apps/jurisfund" },
     { "path": "apps/website", "name": "apps/website" },
     { "path": "packages/ui", "name": "packages/ui" },
     { "path": "packages/utils", "name": "packages/utils" },
@@ -170,10 +170,10 @@
       {
         "type": "node",
         "request": "launch",
-        "name": "Debug unit test (apps/website-ssr)",
+        "name": "Debug unit test (apps/jurisfund)",
         "runtimeExecutable": "pnpm",
         "runtimeArgs": ["test:unit", "${file}"],
-        "cwd": "${workspaceFolder:apps/website-ssr}"
+        "cwd": "${workspaceFolder:apps/jurisfund}"
       },
       {
         "type": "node",

@@ -8,10 +8,10 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Turbo Monorepo — Website SSR</title>
+        <title>JurisFund | Home</title>
         <meta
           name="description"
-          content="Replacement for EKS. (Still doesn't support ISO timestamps.)"
+          content="JurisFund is a credit DeFi protocol backed by consumer pre-settlement funding. This protocol offers investors an opportunity to get exposure to a unique asset class, notable for its lack of correlation with broader market trends and its history of high returns."
         />
       </Head>
 
