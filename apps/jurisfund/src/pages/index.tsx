@@ -2,6 +2,7 @@
 import Head from "next/head";
 // import { Container } from "ui";
 import NextLink from "next/link";
+import React from "react";
 
 // export default function Home({ pwa }: InferGetServerSidePropsType<typeof getServerSideProps>) {
 export default function Home() {
@@ -66,7 +67,7 @@ export default function Home() {
                 >
                   <div>
                     <NextLink
-                      className="btn mb-4 w-full rounded-lg	bg-blue-600 p-4 text-white hover:bg-blue-400 sm:mb-0 sm:w-auto"
+                      className="btn mb-4 w-full rounded-lg bg-blue-600 p-4 text-white hover:bg-blue-400 sm:mb-0 sm:w-auto"
                       href="/auth"
                     >
                       Start as borrower
@@ -74,7 +75,7 @@ export default function Home() {
                   </div>
                   <div>
                     <NextLink
-                      className="btn w-full rounded-lg	bg-gray-900 p-4 text-white hover:bg-gray-400 sm:ml-4 sm:w-auto"
+                      className="btn w-full rounded-lg bg-gray-900 p-4 text-white hover:bg-gray-400 sm:ml-4 sm:w-auto"
                       href="#0"
                     >
                       Enter investor portal
