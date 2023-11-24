@@ -32,10 +32,6 @@
     "test:unit": {
       "cache": false,
       "dependsOn": ["^build"]
-    },
-    "coupling-graph": {
-      "cache": false,
-      "dependsOn": ["^build"]
     }
   }
 }

@@ -21,8 +21,7 @@
     "fix:eslint": "eslint --fix .",
     "fix:prettier": "prettier --plugin-search-dir=. --write .",
     "fix": "run-s fix:*",
-    "prepare": "husky install",
-    "analyze": "cross-env ANALYZE=true pnpm build"
+    "prepare": "husky install"
   },
   "lint-staged": {
     "*": "prettier --ignore-unknown --write",
