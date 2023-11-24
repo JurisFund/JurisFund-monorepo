@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-base-to-string */
 import Link from "next/link";
 import type { FunctionComponent } from "react";
 
@@ -29,8 +30,8 @@ export const Footer: FunctionComponent<FooterProps> = (props) => {
         <div className="flex flex-col items-center border-t border-neutral-200 py-10 dark:border-neutral-700 sm:flex-row-reverse sm:justify-between">
           <nav aria-label="social" className="flex gap-x-6">
             <Link
-              aria-label="Turbo Monorepo on GitHub"
-              href="https://github.com/myopic-design"
+              aria-label="JurisFund on GitHub"
+              href="https://github.com/jurisfund"
               className="group"
             >
               <svg
@@ -42,8 +43,8 @@ export const Footer: FunctionComponent<FooterProps> = (props) => {
               </svg>
             </Link>
             <Link
-              aria-label="Turbo Monorepo on Mastodon"
-              href="https://hachyderm.io/@myopic-design"
+              aria-label="JurisFund on Mastodon"
+              href="https://hachyderm.io/@jurisfund"
               className="group"
             >
               <svg
@@ -55,8 +56,8 @@ export const Footer: FunctionComponent<FooterProps> = (props) => {
               </svg>
             </Link>
             <Link
-              aria-label="Turbo Monorepo on Twitter"
-              href="https://twitter.com/myopic-design"
+              aria-label="JurisFund on Twitter"
+              href="https://twitter.com/jurisfund"
               className="group"
             >
               <svg
@@ -69,7 +70,7 @@ export const Footer: FunctionComponent<FooterProps> = (props) => {
             </Link>
           </nav>
           <p className="mt-6 text-sm text-neutral-500 sm:mt-0">
-            Copyright &copy; {new Date().getFullYear()} Turbo Monorepo. All rights reserved.
+            Copyright &copy; {new Date().getFullYear()} JurisFund. All rights reserved.
           </p>
         </div>
       </Container>
