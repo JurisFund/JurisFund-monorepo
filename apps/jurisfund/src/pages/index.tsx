@@ -56,8 +56,10 @@ export default function Home() {
                   data-aos="zoom-y-out"
                   data-aos-delay="150"
                 >
-                  Our landing page template works on all devices, so you only have to set it up
-                  once, and get beautiful results forever.
+                  JurisFund is a credit DeFi protocol backed by consumer pre-settlement funding.
+                  This protocol offers investors an opportunity to get exposure to a unique asset
+                  class, notable for its lack of correlation with broader market trends and its
+                  history of high returns.
                 </p>
                 <div
                   className="mx-auto max-w-xs sm:flex sm:max-w-none sm:justify-center"
