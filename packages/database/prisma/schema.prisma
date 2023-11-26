@@ -8,14 +8,8 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Example {
-  id    String                           @id @default(auto()) @map("_id") @db.ObjectId
-  name  String
-  regex Unsupported("RegularExpression")
-}
-
 model Account {
-  id    String                           @id @default(auto()) @map("_id") @db.ObjectId
+  id                String @id @default(auto()) @map("_id") @db.ObjectId
   type              String
   provider          String
   providerAccountId String
@@ -26,13 +20,13 @@ model Account {
   scope             String?
   id_token          String?
   session_state     String?
-  userId            String  @db.ObjectId
-  user              User    @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  userId            String @db.ObjectId
+  user              User @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
   @@unique([provider, providerAccountId])
 }
 
 model User {
-  id    String                           @id @default(auto()) @map("_id") @db.ObjectId
+  id               String             @id @default(auto()) @map("_id") @db.ObjectId
   name             String?
   address          String?            @unique
   email            String?            @unique
@@ -43,3 +37,27 @@ model User {
 }
 
 
+model BorrowersTable {
+  id               String             @id @default(auto()) @map("_id") @db.ObjectId
+  userId           String             @db.ObjectId 
+  firstName        String
+  lastName         String           
+  email            String             @unique
+  phoneNumber      DateTime           @unique
+  stateLiveIn      String
+  typeOfCase       String
+  alreadyWorkingWithAttorney String 
+  lawFirmName      String
+  lawyerName       String
+  lawyerEmail      String?
+  expectedSettlementAmount String
+  applicationFillingDate DateTime     @default(now())
+  caseNumber       String 
+  applicationStatus String            @default("Pending") // Pending, Approved, Rejected
+  loanAmount       String?
+  walletAddress    String 
+  fixedAPY         String?
+  loanInssuanseDate DateTime?
+  accruedInterest String?
+  payoffDate       DateTime?
+}
