@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-return */
 // Imports
 // ========================================================
 import { z } from "zod";
@@ -11,7 +10,7 @@ export const applicationsRouter = createTRPCRouter({
   getAll: publicProcedure.query(async ({ ctx }) => {
     return await ctx.prisma.borrowersTable.findMany();
   }),
-  add: protectedProcedure
+  add: publicProcedure // protectedProcedure
     .input(
       z.object({
         firstName: z.string(),
@@ -42,7 +41,7 @@ export const applicationsRouter = createTRPCRouter({
           expectedSettlementAmount: input.expectedSettlementAmount,
           walletAddress: input.walletAddress,
           caseNumber: "01",
-          userId: ctx.session.user.id,
+          userId: "656345522cd7c56e95aaed85", // ctx.session.user.id,
         },
       });
     }),

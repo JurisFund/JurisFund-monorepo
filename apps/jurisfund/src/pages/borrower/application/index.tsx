@@ -3,7 +3,7 @@ import * as React from "react";
 
 import { api } from "@/utils/api";
 
-export default function BorrowerFormPage() {
+export default function BorrowerApplicationFormPage() {
   const [firstName, setFirstName] = React.useState("");
   const [lastName, setLastName] = React.useState("");
   const [email, setEmail] = React.useState("");
@@ -18,28 +18,29 @@ export default function BorrowerFormPage() {
 
   const router = useRouter();
 
-  const postApplication = api.applications.add.useMutation({
-    // onMutate: async (newEntry) => {
-    //   await api.applications.getAll.invalidateQueries;
-    //   api.applications.getAll.setData(undefined, (prevEntries) => {
-    //     if (prevEntries) {
-    //       return [newEntry, ...prevEntries];
-    //     } else {
-    //       return [newEntry];
-    //     }
-    //   });
-    // },
-    // onSettled: async () => {
-    //   await api.applications.getAll.invalidate();
-    // },
-    onSuccess: async () => {
-      await router.push("/borrowerformsuccess");
-    },
-    onError(error, variables /*, context */) {
-      console.error({ error, variables });
-      alert("An error occurred while submitting the form.");
-    },
-  });
+  const { mutate: applicationsAddMutate /*, isLoading: applicationsAddIsLoading */ } =
+    api.applications.add.useMutation({
+      // onMutate: async (newEntry) => {
+      //   await api.applications.getAll.invalidateQueries;
+      //   api.applications.getAll.setData(undefined, (prevEntri es) => {
+      //     if (prevEntries) {
+      //       return [newEntry, ...prevEntries];
+      //     } else {
+      //       return [newEntry];
+      //     }
+      //   });
+      // },
+      // onSettled: async () => {
+      //   await api.applications.getAll.invalidate();
+      // },
+      onSuccess: async () => {
+        await router.push("/borrower/application/success");
+      },
+      onError(error, variables /*, context */) {
+        console.error({ error, variables });
+        alert("An error occurred while submitting the form.");
+      },
+    });
 
   return (
     <section className="relative  gap-2 ">
@@ -47,7 +48,19 @@ export default function BorrowerFormPage() {
         className="bg-orange-200-900 mx-60 flex flex-col gap-4 rounded-md border-2 border-orange-300 p-4"
         onSubmit={(event) => {
           event.preventDefault();
-          postApplication.mutate({
+          console.log("a ", {
+            firstName,
+            lastName,
+            email,
+            phoneNumber,
+            stateLiveIn,
+            typeOfCase,
+            alreadyWorkingWithAttorney,
+            lawFirmName,
+            lawyerName,
+            expectedSettlementAmount,
+          });
+          applicationsAddMutate({
             firstName,
             lastName,
             email,
@@ -194,6 +207,7 @@ export default function BorrowerFormPage() {
           <label className="row min-w-[50%] text-black">What kind of case do you have?</label>
           <div className="flex items-center gap-2 text-center align-middle">
             <button
+              type="button"
               className="flex items-center gap-2 text-center align-middle"
               onClick={() => {
                 setTypeOfCase("Auto Accident");
@@ -209,6 +223,7 @@ export default function BorrowerFormPage() {
               <label className="row w-[50%] text-black">Auto Accident</label>
             </button>
             <button
+              type="button"
               className="flex items-center gap-2 text-center align-middle"
               onClick={() => {
                 setTypeOfCase("Worker's Compensation");
@@ -224,6 +239,7 @@ export default function BorrowerFormPage() {
               <label className="row w-[50%] text-black">{"Worker's Compensation"}</label>
             </button>
             <button
+              type="button"
               className="flex items-center gap-2 text-center align-middle"
               onClick={() => {
                 setTypeOfCase("Slip and Fall (Injury on Other's Property)");
@@ -241,6 +257,7 @@ export default function BorrowerFormPage() {
               </label>
             </button>
             <button
+              type="button"
               className="flex items-center gap-2 text-center align-middle"
               onClick={() => {
                 setTypeOfCase("Wrongful Termination (Employment)");

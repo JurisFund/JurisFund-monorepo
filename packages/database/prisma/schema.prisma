@@ -43,7 +43,7 @@ model BorrowersTable {
   firstName        String
   lastName         String           
   email            String             @unique
-  phoneNumber      DateTime           @unique
+  phoneNumber      String           @unique
   stateLiveIn      String
   typeOfCase       String
   alreadyWorkingWithAttorney String 

@@ -4,8 +4,9 @@ import type { AppProps } from "next/app";
 import { ThemeProvider } from "next-themes";
 
 import { Layout } from "@/components/Layout";
+import { api } from "@/utils/api";
 
-export default function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider attribute="class">
       <Layout>
@@ -14,3 +15,5 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     </ThemeProvider>
   );
 }
+
+export default api.withTRPC(MyApp);
