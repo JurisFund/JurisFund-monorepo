@@ -24,6 +24,7 @@ const Auth = async (req: NextApiRequest, res: NextApiResponse) => {
     authOpts.providers.pop();
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-unsafe-return
   return (await NextAuth(req, res, authOpts)) as typeof NextAuth;
 };
 
