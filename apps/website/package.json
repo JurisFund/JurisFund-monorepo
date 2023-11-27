@@ -10,8 +10,7 @@
     "test:unit": "jest --ci --coverage",
     "test:watch": "jest --watch",
     "storybook:dev": "storybook dev --quiet --port 6002",
-    "storybook:build": "storybook build",
-    "coupling-graph": "npx madge --extensions js,jsx,ts,tsx,css,md,mdx ./ --exclude '.next|tailwind.config.js|reset.d.ts|prettier.config.js|postcss.config.js|next.config.js|next-env.d.ts|instrumentation.ts|e2e/|README.md|.storybook/|.eslintrc.js' --image graph.svg"
+    "storybook:build": "storybook build"
   },
   "dependencies": {
     "@headlessui/react": "1.7.15",

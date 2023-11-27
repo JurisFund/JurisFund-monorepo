@@ -15,13 +15,23 @@
   "dependencies": {
     "@headlessui/react": "1.7.17",
     "@privy-io/react-auth": "^1.48.0",
+    "@t3-oss/env-nextjs": "^0.7.1",
+    "@tanstack/react-query": "^4.35.3",
+    "@trpc/client": "^10.44.1",
+    "@trpc/next": "^10.44.1",
+    "@trpc/server": "^10.44.1",
     "clsx": "2.0.0",
+    "database": "workspace:*",
     "next": "14.0.3",
+    "next-auth": "^4.24.5",
     "next-themes": "0.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "siwe": "^2.1.4",
+    "superjson": "^2.2.1",
     "ui": "workspace:*",
-    "utils": "workspace:*"
+    "utils": "workspace:*",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "jest-config": "workspace:*",

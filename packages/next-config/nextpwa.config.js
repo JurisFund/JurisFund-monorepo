@@ -3,6 +3,7 @@ const withPlugins = require("next-compose-plugins");
 // ({
 //   enabled: !!process.env.ANALYZE,
 // });
+const { PrismaPlugin } = require("@prisma/nextjs-monorepo-workaround-plugin");
 
 const withPWA = require("next-pwa");
 // ({
@@ -16,7 +17,14 @@ module.exports = ({ basePath }) => {
     basePath,
     // pageExtensions: ["page.tsx", "page.ts", "page.jsx", "page.js"],
     reactStrictMode: true,
-    transpilePackages: ["ui", "utils"],
+    transpilePackages: ["ui", "utils", "database"],
+    webpack: (config, { isServer }) => {
+      config.resolve.fallback = { fs: false, net: false, tls: false };
+      if (isServer) {
+        config.plugins = [...config.plugins, new PrismaPlugin()];
+      }
+      return config;
+    },
   };
 
   return withPlugins(
