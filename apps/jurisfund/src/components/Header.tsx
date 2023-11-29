@@ -1,5 +1,7 @@
+import { ConnectWallet } from "@thirdweb-dev/react";
 import type { FunctionComponent } from "react";
-import { Header } from "ui";
+import { Container } from "ui";
+import { Navigation } from "ui/components/Navigation";
 
 const links = {
   leftLinks: [
@@ -16,20 +18,27 @@ const links = {
     //   variant: "text",
     // },
     // {
-    //   children: (
-    //     <span>
-    //       Get{"\u00a0"}started<span className="hidden lg:inline">{"\u00a0"}today</span>
-    //     </span>
-    //   ),
-    //   classNameMobile: "hidden",
-    //   href: "/signup",
-    //   variant: "primary",
+    //   href: "/",
+    //   variant: "",
     // },
   ],
 } as const;
 
 const PageHeader: FunctionComponent = () => {
-  return <Header {...links} />;
+  return (
+    <header className=" py-10 ">
+      <Container className="flex justify-evenly">
+        <Navigation {...links} />
+        <ConnectWallet
+          theme={"light"}
+          auth={{ loginOptional: false }}
+          switchToActiveChain={true}
+          modalSize={"compact"}
+          welcomeScreen={{}}
+        />
+      </Container>
+    </header>
+  );
 };
 
 export { PageHeader as Header };

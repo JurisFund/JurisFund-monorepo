@@ -42,5 +42,9 @@
     "storybook-config": "workspace:*",
     "tailwindcss-config": "workspace:*",
     "typescript-config": "workspace:*"
+  },
+  "dependencies": {
+    "@thirdweb-dev/react": "^4.1.10",
+    "@thirdweb-dev/sdk": "^4.0.17"
   }
 }
