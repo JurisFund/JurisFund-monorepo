@@ -27,6 +27,7 @@ const server = z.object({
  */
 const client = z.object({
   NEXT_PUBLIC_THIRDWEB_CLIENT_ID: z.string(),
+  NEXT_PUBLIC_NEXTAUTH_URL: z.string().url(),
   // NEXT_PUBLIC_CLIENTVAR: z.string().min(1),
 });
 
@@ -42,6 +43,7 @@ const processEnv = {
   NEXT_PUBLIC_THIRDWEB_CLIENT_ID: process.env["NEXT_PUBLIC_THIRDWEB_CLIENT_ID"],
   NEXTAUTH_SECRET: process.env["NEXTAUTH_SECRET"],
   NEXTAUTH_URL: process.env["NEXTAUTH_URL"],
+  NEXT_PUBLIC_NEXTAUTH_URL: process.env["NEXT_PUBLIC_NEXTAUTH_URL"],
   // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
 };
 
