@@ -66,6 +66,12 @@ export default function Dashboard() {
                         >
                           Case Type
                         </th>
+                        <th
+                          scope="col"
+                          className="border-b border-gray-200 px-5 py-3 text-left text-sm font-normal uppercase"
+                        >
+                          Application Status
+                        </th>
                       </tr>
                     </thead>
                     <tbody className="text-black">
@@ -73,8 +79,18 @@ export default function Dashboard() {
                         ? applicationsData.map((application, idx) => (
                             <tr
                               key={idx}
-                              className="hover:cursor-pointer hover:bg-sky-100"
-                              onClick={() => void handleApplicationSelected(application.id)}
+                              className={`${
+                                application.applicationStatus === "pending" ||
+                                application.applicationStatus === "Pending"
+                                  ? "hover:cursor-pointer"
+                                  : ""
+                              } hover:bg-sky-100`}
+                              onClick={() =>
+                                application.applicationStatus === "pending" ||
+                                application.applicationStatus === "Pending"
+                                  ? void handleApplicationSelected(application.id)
+                                  : null
+                              }
                             >
                               <td className="border-b border-gray-200 p-5 text-sm">
                                 <p className="whitespace-nowrap">
@@ -94,6 +110,17 @@ export default function Dashboard() {
                               </td>
                               <td className="border-b border-gray-200 p-5 text-sm">
                                 <p className="whitespace-nowrap">{`${application.typeOfCase}`}</p>
+                              </td>
+                              <td
+                                className={`border-b border-gray-200 p-5 text-center text-sm ${
+                                  application.applicationStatus.toUpperCase() === "APPROVED"
+                                    ? "bg-green-300"
+                                    : application.applicationStatus.toUpperCase() === "REJECTED"
+                                    ? "bg-red-400"
+                                    : ""
+                                }`}
+                              >
+                                <p className="whitespace-nowrap">{`${application.applicationStatus.toUpperCase()}`}</p>
                               </td>
                             </tr>
                           ))
