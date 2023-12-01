@@ -8,7 +8,8 @@ import { createTRPCRouter, protectedProcedure, publicProcedure } from "@/server/
 // ========================================================
 export const applicationsRouter = createTRPCRouter({
   getAll: publicProcedure.query(async ({ ctx }) => {
-    return await ctx.prisma.borrowersTable.findMany();
+    const applications = await ctx.prisma.borrowersTable.findMany();
+    return applications;
   }),
   add: publicProcedure // protectedProcedure
     .input(
