@@ -2,7 +2,7 @@
 // ========================================================
 import { z } from "zod";
 
-import { createTRPCRouter, protectedProcedure, publicProcedure } from "@/server/api/trpc";
+import { createTRPCRouter, /* protectedProcedure, */ publicProcedure } from "@/server/api/trpc";
 
 // Router
 // ========================================================
@@ -11,6 +11,20 @@ export const applicationsRouter = createTRPCRouter({
     const applications = await ctx.prisma.borrowersTable.findMany();
     return applications;
   }),
+  getByID: publicProcedure
+    .input(
+      z.object({
+        applicationID: z.string(),
+      }),
+    )
+    .query(async ({ input, ctx }) => {
+      const application = await ctx.prisma.borrowersTable.findUnique({
+        where: {
+          id: input.applicationID,
+        },
+      });
+      return application;
+    }),
   add: publicProcedure // protectedProcedure
     .input(
       z.object({
@@ -46,7 +60,27 @@ export const applicationsRouter = createTRPCRouter({
         },
       });
     }),
-  getSecretMessage: protectedProcedure.query(() => {
-    return "you can now see this secret message!";
-  }),
+  update: publicProcedure
+    .input(
+      z.object({
+        applicationID: z.string(),
+        loanAmount: z.string(),
+        interestRate: z.string(),
+        lawyerWalletAddress: z.string(),
+        adminReview: z.string(),
+      }),
+    )
+    .mutation(async ({ input, ctx }) => {
+      return await ctx.prisma.borrowersTable.update({
+        where: {
+          id: input.applicationID,
+        },
+        data: {
+          loanAmount: input.loanAmount,
+          fixedAPY: input.interestRate,
+          lawyerWalletAddress: input.lawyerWalletAddress,
+          applicationStatus: input.adminReview,
+        },
+      });
+    }),
 });
