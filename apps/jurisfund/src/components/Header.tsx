@@ -5,8 +5,8 @@ import { Navigation } from "ui/components/Navigation";
 
 const links = {
   leftLinks: [
-    { children: "Features", href: "#features", variant: "text" },
-    { children: "Testimonials", href: "#testimonials", variant: "text" },
+    { children: "Application Form", href: "/borrower/application", variant: "text" },
+    { children: "Admin Dashboard", href: "/applications", variant: "text" },
     { children: "Pricing", href: "#pricing", variant: "text" },
   ],
   rightLinks: [
