@@ -14,6 +14,9 @@ export default function ApplicationDetailPage() {
   const [interestRate, setInterestRate] = React.useState<string>("");
   const [lawyerWalletAddress, setLawyerWalletAddress] = React.useState<string>("");
 
+  const [interestRateIsMultiplierOf3, setInterestRateIsMultiplierOf3] =
+    React.useState<boolean>(false);
+
   const { applicationID } = router.query;
 
   React.useEffect(() => {
@@ -46,6 +49,27 @@ export default function ApplicationDetailPage() {
       await router.push("/applications");
     },
   });
+
+  const handleApplicationRejection = () => {
+    applicationApprovalMutation({
+      applicationID: currentApplicationID,
+      loanAmount,
+      interestRate,
+      lawyerWalletAddress,
+      adminReview: "rejected",
+    });
+  };
+
+  React.useEffect(() => {
+    if (interestRate !== "") {
+      const valueAsNumber = Number(interestRate);
+      if (valueAsNumber % 3 == 0) {
+        setInterestRateIsMultiplierOf3(true);
+      } else {
+        setInterestRateIsMultiplierOf3(false);
+      }
+    }
+  }, [interestRate]);
 
   return (
     <>
@@ -105,13 +129,22 @@ export default function ApplicationDetailPage() {
         </div>
 
         {!applicationPreApproved ? (
-          <button
-            type="button"
-            className="text-white-400 mx-auto mt-6 w-[50%] rounded-md border-2 border-indigo-700 bg-green-400 p-2 hover:border-zinc-800 hover:bg-green-600 hover:text-xl hover:text-zinc-800 focus:outline-none"
-            onClick={handleApplicationPreApproval}
-          >
-            Approve
-          </button>
+          <div className="mx-auto w-[50%] content-evenly justify-evenly">
+            <button
+              type="button"
+              className="mt-6 w-[30%] rounded-md border-2 border-indigo-700 bg-green-400 p-2 hover:border-zinc-800 hover:bg-green-600 hover:text-xl hover:text-white focus:outline-none"
+              onClick={handleApplicationPreApproval}
+            >
+              Approve
+            </button>
+            <button
+              type="button"
+              className="mt-6 w-[30%] rounded-md border-2 border-indigo-700 bg-red-400 p-2 hover:border-zinc-800 hover:bg-red-600 hover:text-xl hover:text-white  focus:outline-none"
+              onClick={handleApplicationRejection}
+            >
+              Reject
+            </button>
+          </div>
         ) : (
           <form
             className="bg-orange-200-900 mx-60 flex flex-col gap-4 rounded-md border-2 border-orange-300 p-4"
@@ -129,6 +162,7 @@ export default function ApplicationDetailPage() {
                 loanAmount,
                 interestRate,
                 lawyerWalletAddress,
+                adminReview: "approved",
               });
               setCurrentApplicationID("");
               setLoanAmount("");
@@ -136,22 +170,20 @@ export default function ApplicationDetailPage() {
               setLawyerWalletAddress("");
             }}
           >
-            {/* Namely, loan amount, interest rate (APR), lawyer wallet address. */}
-            {/* <div className="flex flex-row content-center gap-4 text-center">
-              <label className="row w-[50%] text-black">Namely</label>
+            <div className="flex flex-row content-center gap-4 text-center">
+              <label className="row w-[50%] text-black">Lawyer wallet address</label>
               <input
                 type="text"
                 className="row rounded-md border-2 border-zinc-800 bg-neutral-900 px-4 py-2 text-yellow-100 focus:outline-none"
-                placeholder="Your Email..."
+                placeholder="Enter the Lawyer wallet address..."
                 minLength={2}
                 maxLength={100}
-                value={namely}
+                value={lawyerWalletAddress}
                 onChange={(event) => {
-                  setNamely(event.target.value);
+                  setLawyerWalletAddress(event.target.value);
                 }}
               />
-            </div> */}
-
+            </div>
             <div className="flex flex-row content-center gap-4 text-center">
               <label className="row w-[50%] text-black">Loan Amount</label>
               <input
@@ -171,31 +203,18 @@ export default function ApplicationDetailPage() {
               <label className="row w-[50%] text-black">Interest Rate (APR)</label>
               <input
                 type="text"
-                className="row rounded-md border-2 border-zinc-800 bg-neutral-900 px-4 py-2 text-yellow-100 focus:outline-none"
-                placeholder="Enter the Interest Rate value..."
-                minLength={2}
-                maxLength={100}
+                className={`row rounded-md border-2 bg-neutral-900 px-4 py-2 text-yellow-100 focus:outline-none ${
+                  !interestRateIsMultiplierOf3 ? "border-red-500" : "border-green-500"
+                }`}
+                placeholder="Enter the Interest Rate value... (must be a multiple of 3)"
                 value={interestRate}
                 onChange={(event) => {
                   setInterestRate(event.target.value);
                 }}
+                // onChange={handleCheckMultiplierOf3}
               />
             </div>
 
-            <div className="flex flex-row content-center gap-4 text-center">
-              <label className="row w-[50%] text-black">Lawyer wallet address</label>
-              <input
-                type="text"
-                className="row rounded-md border-2 border-zinc-800 bg-neutral-900 px-4 py-2 text-yellow-100 focus:outline-none"
-                placeholder="Enter the Lawyer wallet address..."
-                minLength={2}
-                maxLength={100}
-                value={lawyerWalletAddress}
-                onChange={(event) => {
-                  setLawyerWalletAddress(event.target.value);
-                }}
-              />
-            </div>
             <button
               type="submit"
               className="bg-slate-600-800 mx-auto w-[50%] rounded-md border-2 border-indigo-700 p-2 text-indigo-400 hover:border-zinc-800 hover:bg-orange-300 hover:text-zinc-800 focus:outline-none"
@@ -203,7 +222,8 @@ export default function ApplicationDetailPage() {
                 currentApplicationID === "" ||
                 loanAmount === "" ||
                 interestRate === "" ||
-                lawyerWalletAddress === ""
+                lawyerWalletAddress === "" ||
+                !interestRateIsMultiplierOf3
               }
             >
               Approve Application
