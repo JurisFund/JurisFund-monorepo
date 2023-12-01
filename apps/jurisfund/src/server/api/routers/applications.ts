@@ -78,6 +78,7 @@ export const applicationsRouter = createTRPCRouter({
           loanAmount: input.loanAmount,
           fixedAPY: input.interestRate,
           lawyerWalletAddress: input.lawyerWalletAddress,
+          applicationStatus: "Approved",
         },
       });
     }),
