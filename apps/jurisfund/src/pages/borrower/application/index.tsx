@@ -238,6 +238,7 @@ export default function BorrowerApplicationFormPage() {
               <option value="Wrongful Termination (Employment)">
                 Wrongful Termination (Employment)
               </option>
+              <option value="FTX Bankruptcy Claim">FTX Bankruptcy Claim</option>
             </select>
           </div>
           <div className="flex flex-row content-center gap-4 text-center">
