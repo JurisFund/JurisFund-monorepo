@@ -48,7 +48,8 @@
     "javascript.preferences.importModuleSpecifier": "non-relative",
     "typescript.preferences.importModuleSpecifier": "non-relative",
     "typescript.tsdk": "root/node_modules/typescript/lib",
-    "workbench.editor.labelFormat": "medium"
+    "workbench.editor.labelFormat": "medium",
+    "editor.inlineSuggest.showToolbar": "onHover"
   },
   "tasks": {
     "version": "2.0.0",

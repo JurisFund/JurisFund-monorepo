@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import { ConnectWallet, useAddress, useWallet } from "@thirdweb-dev/react";
 import { type FunctionComponent, useEffect, useMemo, useState } from "react";
 import { Container } from "ui";
@@ -34,7 +35,7 @@ const PageHeader: FunctionComponent = () => {
     if (connectedWallet) {
       connectedWallet
         .getEmail()
-        .then((email) => {
+        .then((email: string | undefined) => {
           setEmail(email);
         })
         .catch((error) => {
@@ -53,7 +54,7 @@ const PageHeader: FunctionComponent = () => {
   console.log({ email, address });
 
   return (
-    <header className=" py-10 ">
+    <header className="py-10 ">
       <Container className="flex justify-evenly">
         <Navigation {...links} />
         <ConnectWallet
