@@ -1,3 +1,4 @@
+import { randomBytes } from "crypto";
 import Document, {
   type DocumentContext,
   type DocumentInitialProps,
@@ -6,7 +7,7 @@ import Document, {
   Main,
   NextScript,
 } from "next/document";
-import { getCspContent } from "utils";
+// import { getCspContent } from "utils";
 
 class MyDocument extends Document {
   static override async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
@@ -16,16 +17,15 @@ class MyDocument extends Document {
   }
 
   override render() {
-    const csp = getCspContent(NextScript.getInlineScriptSource(this.props));
+    // const csp = getCspContent(NextScript.getInlineScriptSource(this.props));
+    const nonce = randomBytes(128).toString("base64");
+    const csp = `object-src 'none'; base-uri 'none'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https: http: 'nonce-${nonce}' 'strict-dynamic'`;
 
     return (
       <Html lang="en">
-        <Head>
+        <Head nonce={nonce}>
+          {/* <meta httpEquiv="Content-Security-Policy" content={csp} /> */}
           <meta httpEquiv="Content-Security-Policy" content={csp} />
-          <meta
-            name="viewport"
-            content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
-          />
 
           <meta name="JurisFund" content="JurisFund" />
           <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -47,7 +47,7 @@ class MyDocument extends Document {
         </Head>
         <body className="bg-neutral-50 dark:bg-neutral-900">
           <Main />
-          <NextScript />
+          <NextScript nonce={nonce} />
         </body>
       </Html>
     );

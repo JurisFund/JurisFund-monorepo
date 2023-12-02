@@ -64,7 +64,7 @@ const cspDev = {
   "connect-src": ["'self'"],
   "font-src": ["'self'"],
   "frame-src": ["'self'"],
-  "img-src": ["'self'"],
+  // "img-src": ["'none'"],s
   "script-src": ["'self'", "'unsafe-eval'", "'unsafe-inline'"],
   "style-src": ["'self'", "'unsafe-inline'"],
   "manifest-src": ["'self'"],

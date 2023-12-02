@@ -25,6 +25,16 @@ module.exports = ({ basePath }) => {
       }
       return config;
     },
+    images: {
+      remotePatterns: [
+        {
+          protocol: "https",
+          hostname: "res.cloudinary.com",
+          port: "",
+          pathname: "/beloved/**",
+        },
+      ],
+    },
   };
 
   return withPlugins(

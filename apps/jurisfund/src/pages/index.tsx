@@ -70,7 +70,7 @@ export default function Home() {
                   <div>
                     <NextLink
                       className="btn mb-4 w-full rounded-lg bg-blue-600 p-4 text-white hover:bg-blue-400 sm:mb-0 sm:w-auto"
-                      href="/auth"
+                      href="/borrower/application"
                     >
                       Start as borrower
                     </NextLink>

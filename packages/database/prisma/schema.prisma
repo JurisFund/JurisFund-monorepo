@@ -50,6 +50,7 @@ model BorrowersTable {
   lawFirmName      String
   lawyerName       String
   lawyerEmail      String?
+  lawyerWalletAddress String?
   expectedSettlementAmount String
   applicationFillingDate DateTime     @default(now())
   caseNumber       String 
@@ -60,4 +61,5 @@ model BorrowersTable {
   loanInssuanseDate DateTime?
   accruedInterest String?
   payoffDate       DateTime?
+
 }
