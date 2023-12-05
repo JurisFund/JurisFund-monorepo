@@ -66,8 +66,8 @@ export default function Home() {
                   class, notable for its lack of correlation with broader market trends and its
                   history of high returns.
                 </p>
-                DEV_NOTE: copmmented buttons block div in order to clean the page, leaving it here
-                for reference
+                {/* DEV_NOTE: copmmented buttons block div in order to clean the page, leaving it here
+                for reference */}
                 {/* <div
                   className="mx-auto max-w-xs sm:flex sm:max-w-none sm:justify-center"
                   data-aos="zoom-y-out"
