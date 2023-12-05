@@ -18,12 +18,12 @@ export const Navigation: FunctionComponent<NavigationProps> = (props) => {
   return (
     <nav aria-label="main" className="relative flex justify-between">
       <div className="flex gap-x-5 md:items-center md:gap-x-10">
-        <Link aria-label="Home" href="/">
+        <Link aria-label="Home" href="/" className="mr-2">
           {props.customLogo !== undefined ? props.customLogo : <Logo className="h-10 w-auto" />}
         </Link>
         <div className="hidden gap-x-5 md:flex">
           {leftLinks.map(({ classNameMobile: _classNameMobile, ...link }) => (
-            <ButtonLink {...link} key={link.href.toString()} />
+            <ButtonLink {...link} key={link.href.toString()} className="text-2xl" />
           ))}
         </div>
       </div>
@@ -31,7 +31,7 @@ export const Navigation: FunctionComponent<NavigationProps> = (props) => {
         {rightLinks.map(({ classNameMobile: _classNameMobile, ...link }) => (
           <ButtonLink {...link} key={link.href.toString()} />
         ))}
-        <div className="-mr-1 md:hidden">
+        <div className="mr-2 md:hidden">
           <MobileNavigation {...props} />
         </div>
       </div>
