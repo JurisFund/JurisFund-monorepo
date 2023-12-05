@@ -10,7 +10,7 @@ export const Layout: FunctionComponent<PropsWithChildren> = ({ children }) => {
   return (
     <>
       <Header />
-      <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      <main className="flex min-h-screen flex-col items-center justify-between p-10 md:p-24">
         <div
           className="pointer-events-none absolute bottom-0 left-1/2 -z-10 w-full -translate-x-1/2 transform"
           aria-hidden="true"

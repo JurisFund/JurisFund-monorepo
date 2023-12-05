@@ -17,7 +17,7 @@ export const Navigation: FunctionComponent<NavigationProps> = (props) => {
 
   return (
     <nav aria-label="main" className="relative flex justify-between">
-      <div className="flex items-center gap-x-5 md:gap-x-10">
+      <div className="flex gap-x-5 md:items-center md:gap-x-10">
         <Link aria-label="Home" href="/">
           {props.customLogo !== undefined ? props.customLogo : <Logo className="h-10 w-auto" />}
         </Link>

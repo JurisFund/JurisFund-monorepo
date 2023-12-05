@@ -55,7 +55,7 @@ export default function BorrowerApplicationFormPage() {
       //   await api.applications.getAll.invalidate();
       // },
       onSuccess: async () => {
-        await router.push("/borrower/application/success");
+        await router.push("/borrower/apply/success");
       },
       onError(error, variables /*, context */) {
         console.error({ error, variables });
