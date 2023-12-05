@@ -56,7 +56,7 @@ export default function Home() {
                   data-aos="zoom-y-out"
                   data-aos-delay="150"
                 >
-                  JurisFund is a credit DeFi protocol backed by consumer pre-settlement funding.
+                  JurisFund is a private credit protocol backed by consumer pre-settlement funding.
                   This protocol offers investors an opportunity to get exposure to a unique asset
                   class, notable for its lack of correlation with broader market trends and its
                   history of high returns.
@@ -75,7 +75,7 @@ export default function Home() {
                       className="btn mb-4 w-full rounded-lg	bg-blue-600 p-4 text-white hover:bg-blue-400"
                       href="/borrower/application"
                     >
-                      Start as borrower
+                      Start as a borrower
                     </NextLink>
                   </div>
                   <div className="w-full md:w-1/2">
