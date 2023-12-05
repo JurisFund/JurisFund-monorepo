@@ -1,7 +1,7 @@
 {
   "folders": [
     { "path": "apps/jurisfund", "name": "apps/jurisfund" },
-    { "path": "apps/website", "name": "apps/website" },
+    { "path": "apps/lending", "name": "apps/lending" },
     { "path": "packages/ui", "name": "packages/ui" },
     { "path": "packages/utils", "name": "packages/utils" },
     { "path": "packages/eslint-config-custom", "name": "packages/eslint-config-custom" },
@@ -179,10 +179,10 @@
       {
         "type": "node",
         "request": "launch",
-        "name": "Debug unit test (apps/website)",
+        "name": "Debug unit test (apps/lending)",
         "runtimeExecutable": "pnpm",
         "runtimeArgs": ["test:unit", "${file}"],
-        "cwd": "${workspaceFolder:apps/website}"
+        "cwd": "${workspaceFolder:apps/lending}"
       },
       {
         "type": "node",

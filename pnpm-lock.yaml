@@ -158,6 +158,103 @@ importers:
       ui:
         specifier: workspace:*
         version: link:../../packages/ui
+      usehooks-ts:
+        specifier: ^2.9.1
+        version: 2.9.1(react-dom@18.2.0)(react@18.2.0)
+      utils:
+        specifier: workspace:*
+        version: link:../../packages/utils
+      zod:
+        specifier: ^3.22.4
+        version: 3.22.4
+    devDependencies:
+      jest-config:
+        specifier: workspace:*
+        version: link:../../packages/jest-config
+      next-config:
+        specifier: workspace:*
+        version: link:../../packages/next-config
+      storybook-config:
+        specifier: workspace:*
+        version: link:../../packages/storybook-config
+      tailwindcss-config:
+        specifier: workspace:*
+        version: link:../../packages/tailwindcss-config
+      typescript-config:
+        specifier: workspace:*
+        version: link:../../packages/typescript-config
+
+  apps/lending:
+    dependencies:
+      '@headlessui/react':
+        specifier: 1.7.17
+        version: 1.7.17(react-dom@18.2.0)(react@18.2.0)
+      '@privy-io/react-auth':
+        specifier: ^1.48.0
+        version: 1.48.0(@babel/core@7.23.3)(@types/react@18.2.16)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)
+      '@t3-oss/env-nextjs':
+        specifier: ^0.7.1
+        version: 0.7.1(typescript@5.1.6)(zod@3.22.4)
+      '@tanstack/react-query':
+        specifier: ^4.35.3
+        version: 4.35.3(react-dom@18.2.0)(react@18.2.0)
+      '@thirdweb-dev/auth':
+        specifier: ^4.1.12
+        version: 4.1.12(@ethersproject/abstract-provider@5.7.0)(@ethersproject/abstract-signer@5.7.0)(@ethersproject/bignumber@5.7.0)(@ethersproject/properties@5.7.0)(@types/react@18.2.16)(ethers@5.7.2)(fastify@4.24.3)(localforage@1.10.0)(next-auth@4.24.5)(next@14.0.3)(react@18.2.0)(typescript@5.1.6)
+      '@thirdweb-dev/chains':
+        specifier: ^0.1.59
+        version: 0.1.59
+      '@thirdweb-dev/react':
+        specifier: ^4.1.10
+        version: 4.1.10(@ethersproject/abstract-provider@5.7.0)(@ethersproject/abstract-signer@5.7.0)(@ethersproject/bignumber@5.7.0)(@ethersproject/properties@5.7.0)(@thirdweb-dev/sdk@4.0.17)(@types/react-dom@18.2.7)(@types/react@18.2.16)(ethers@5.7.2)(fastify@4.24.3)(localforage@1.10.0)(next-auth@4.24.5)(next@14.0.3)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)
+      '@thirdweb-dev/sdk':
+        specifier: ^4.0.17
+        version: 4.0.17(ethers@5.7.2)(typescript@5.1.6)
+      '@trpc/client':
+        specifier: ^10.44.1
+        version: 10.44.1(@trpc/server@10.44.1)
+      '@trpc/next':
+        specifier: ^10.44.1
+        version: 10.44.1(@tanstack/react-query@4.35.3)(@trpc/client@10.44.1)(@trpc/react-query@10.44.1)(@trpc/server@10.44.1)(next@14.0.3)(react-dom@18.2.0)(react@18.2.0)
+      '@trpc/server':
+        specifier: ^10.44.1
+        version: 10.44.1
+      clsx:
+        specifier: 2.0.0
+        version: 2.0.0
+      database:
+        specifier: workspace:*
+        version: link:../../packages/database
+      ethers:
+        specifier: '5'
+        version: 5.7.2
+      next:
+        specifier: 14.0.3
+        version: 14.0.3(@babel/core@7.23.3)(react-dom@18.2.0)(react@18.2.0)
+      next-auth:
+        specifier: ^4.24.5
+        version: 4.24.5(next@14.0.3)(react-dom@18.2.0)(react@18.2.0)
+      next-seo:
+        specifier: ^6.4.0
+        version: 6.4.0(next@14.0.3)(react-dom@18.2.0)(react@18.2.0)
+      next-themes:
+        specifier: 0.2.1
+        version: 0.2.1(next@14.0.3)(react-dom@18.2.0)(react@18.2.0)
+      react:
+        specifier: 18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: 18.2.0
+        version: 18.2.0(react@18.2.0)
+      siwe:
+        specifier: ^2.1.4
+        version: 2.1.4(ethers@5.7.2)
+      superjson:
+        specifier: ^2.2.1
+        version: 2.2.1
+      ui:
+        specifier: workspace:*
+        version: link:../../packages/ui
       utils:
         specifier: workspace:*
         version: link:../../packages/utils
@@ -18966,6 +19063,17 @@ packages:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
       react: 18.2.0
+    dev: false
+
+  /usehooks-ts@2.9.1(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-2FAuSIGHlY+apM9FVlj8/oNhd+1y+Uwv5QNkMQz1oSfdHk4PXo1qoCw9I5M7j0vpH8CSWFJwXbVPeYDjLCx9PA==}
+    engines: {node: '>=16.15.0', npm: '>=8'}
+    peerDependencies:
+      react: ^16.8.0  || ^17.0.0 || ^18.0.0
+      react-dom: ^16.8.0  || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /utf-8-validate@5.0.10:

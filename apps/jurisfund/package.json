@@ -36,6 +36,7 @@
     "siwe": "^2.1.4",
     "superjson": "^2.2.1",
     "ui": "workspace:*",
+    "usehooks-ts": "^2.9.1",
     "utils": "workspace:*",
     "zod": "^3.22.4"
   },
