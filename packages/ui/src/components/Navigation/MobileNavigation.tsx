@@ -44,7 +44,7 @@ export const MobileNavigation: FunctionComponent<MogileNavigationProps> = (props
         >
           <Popover.Panel
             as="div"
-            className="absolute inset-x-0 top-full mt-4 flex origin-top flex-col rounded-xl bg-neutral-50 p-4 text-neutral-900 shadow-xl dark:bg-neutral-900"
+            className="absolute inset-x-0 top-full mt-4 flex w-44 origin-top flex-col rounded-xl bg-neutral-50 p-4 text-center text-neutral-900 shadow-xl dark:bg-neutral-900"
           >
             {leftLinks.map(({ classNameMobile, ...link }) => (
               <MobileNavigationButton
