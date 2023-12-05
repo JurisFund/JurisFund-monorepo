@@ -1,17 +1,17 @@
 // import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import Head from "next/head";
 // import { Container } from "ui";
-import NextLink from "next/link";
+// import NextLink from "next/link";
 
 // export default function Home({ pwa }: InferGetServerSidePropsType<typeof getServerSideProps>) {
 export default function Home() {
   return (
     <>
       <Head>
-        <title>JurisFund | Home</title>
+        <title>JurisFund Lend | Home</title>
         <meta
           name="description"
-          content="JurisFund is a tokenized private credit protocol backed by consumer pre-settlement funding. This protocol offers investors an opportunity to get exposure to a unique asset class, notable for its lack of correlation with broader market trends and its history of high returns."
+          content="JurisFund is a credit DeFi protocol backed by consumer pre-settlement funding. This protocol offers investors an opportunity to get exposure to a unique asset class, notable for its lack of correlation with broader market trends and its history of high returns."
         />
       </Head>
 
@@ -49,6 +49,11 @@ export default function Home() {
                 <span className="bg-gradient-to-r from-blue-500 to-teal-400 bg-clip-text text-transparent">
                   Fund
                 </span>
+                <br />
+                <span className="bg-gradient-to-r from-blue-500 to-teal-400 bg-clip-text text-transparent">
+                  Lending
+                </span>
+                Protocol
               </h1>
               <div className="mx-auto max-w-3xl">
                 <p
@@ -61,7 +66,9 @@ export default function Home() {
                   class, notable for its lack of correlation with broader market trends and its
                   history of high returns.
                 </p>
-                <div
+                DEV_NOTE: copmmented buttons block div in order to clean the page, leaving it here
+                for reference
+                {/* <div
                   className="mx-auto max-w-xs sm:flex sm:max-w-none sm:justify-center"
                   data-aos="zoom-y-out"
                   data-aos-delay="300"
@@ -82,7 +89,7 @@ export default function Home() {
                       Enter investor portal
                     </NextLink>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

@@ -1,10 +1,8 @@
 import type { DefaultSeoProps } from "next-seo";
 
 const config: DefaultSeoProps = {
-  titleTemplate: "JurisFund | %s",
-  defaultTitle: "JurisFund",
-  description:
-    "JurisFund is a tokenized private credit protocol backed by consumer pre-settlement funding. This protocol offers investors an opportunity to get exposure to a unique asset class, notable for its lack of correlation with broader market trends and its history of high returns.",
+  titleTemplate: "JurisFund Lend | %s",
+  defaultTitle: "JurisFund Lend",
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -12,14 +10,14 @@ const config: DefaultSeoProps = {
       process.env["NEXT_PUBLIC_VERCEL_URL"] !== undefined
         ? `https://${process.env["NEXT_PUBLIC_VERCEL_URL"]}`
         : "",
-    site_name: `JurisFund`,
+    site_name: `JurisFund Lend`,
     images: [
       {
         url:
           process.env["NEXT_PUBLIC_VERCEL_URL"] !== undefined
             ? `https://${process.env["NEXT_PUBLIC_VERCEL_URL"]}/landing-page-screenshot.png`
             : "",
-        alt: "JurisFund",
+        alt: "JurisFund Lend",
         type: "image/png",
       },
     ],
