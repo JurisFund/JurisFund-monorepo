@@ -33,7 +33,10 @@ class MyDocument extends Document {
           <meta name="apple-mobile-web-app-title" content="JurisFund" />
           <meta
             name="description"
-            content="JurisFund is a tokenized private credit protocol backed by consumer pre-settlement funding. This protocol offers investors an opportunity to get exposure to a unique asset class, notable for its lack of correlation with broader market trends and its history of high returns."
+            content="JurisFund is a private credit protocol backed by consumer pre-settlement funding.
+            This protocol offers investors an opportunity to get exposure to a unique asset
+            class, notable for its lack of correlation with broader market trends and its
+            history of high returns."
           />
           <meta name="format-detection" content="telephone=no" />
           <meta name="mobile-web-app-capable" content="yes" />

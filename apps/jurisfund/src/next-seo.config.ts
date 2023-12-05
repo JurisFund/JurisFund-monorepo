@@ -4,7 +4,7 @@ const config: DefaultSeoProps = {
   titleTemplate: "JurisFund | %s",
   defaultTitle: "JurisFund",
   description:
-    "JurisFund is a tokenized private credit protocol backed by consumer pre-settlement funding. This protocol offers investors an opportunity to get exposure to a unique asset class, notable for its lack of correlation with broader market trends and its history of high returns.",
+    "JurisFund is a private credit protocol backed by consumer pre-settlement funding. This protocol offers investors an opportunity to get exposure to a unique asset class, notable for its lack of correlation with broader market trends and its history of high returns.",
   openGraph: {
     type: "website",
     locale: "en_US",
