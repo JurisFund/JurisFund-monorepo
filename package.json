@@ -9,6 +9,7 @@
   "scripts": {
     "clean": "turbo run clean --no-daemon",
     "dev": "turbo run dev --no-daemon --concurrency=13",
+    "dev:jurisfund": "turbo run dev --no-daemon --concurrency=13 --filter=jurisfund",
     "dev:lending": "turbo run dev --no-daemon --concurrency=13 --filter=lending",
     "build": "turbo run build --no-daemon",
     "check": "turbo run check --no-daemon",

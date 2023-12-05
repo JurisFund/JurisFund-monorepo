@@ -38,11 +38,11 @@ export default function Home() {
 
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           {/* Hero content */}
-          <div className="pb-12 pt-32 md:pb-20 md:pt-40">
+          <div className="pb-14 pt-10 md:pb-20 md:pt-40">
             {/* Section header */}
             <div className="pb-12 text-center md:pb-16">
               <h1
-                className="leading-tighter mb-4 text-5xl font-extrabold tracking-tighter md:text-6xl"
+                className="leading-tighter mb-16 text-5xl font-extrabold tracking-tighter md:text-6xl"
                 data-aos="zoom-y-out"
               >
                 Juris
@@ -62,21 +62,25 @@ export default function Home() {
                   history of high returns.
                 </p>
                 <div
-                  className="mx-auto max-w-xs sm:flex sm:max-w-none sm:justify-center"
+                  // className="content-between justify-between align-middle xl:mx-auto xl:max-w-xs"
+                  className="flex flex-col gap-14 pt-4 md:flex-row md:justify-start md:gap-0 md:pt-10"
                   data-aos="zoom-y-out"
                   data-aos-delay="300"
                 >
-                  <div>
+                  <div
+                    className="w-full md:w-1/2"
+                    // className="relative"
+                  >
                     <NextLink
-                      className="btn mb-4 w-full rounded-lg	bg-blue-600 p-4 text-white hover:bg-blue-400 sm:mb-0 sm:w-auto"
+                      className="btn mb-4 w-full rounded-lg	bg-blue-600 p-4 text-white hover:bg-blue-400"
                       href="/borrower/application"
                     >
                       Start as borrower
                     </NextLink>
                   </div>
-                  <div>
+                  <div className="w-full md:w-1/2">
                     <NextLink
-                      className="btn w-full rounded-lg	bg-gray-900 p-4 text-white hover:bg-gray-400 sm:ml-4 sm:w-auto"
+                      className="btn w-full rounded-lg	bg-gray-900 p-4 text-white hover:bg-gray-400 "
                       href="#0"
                     >
                       Enter investor portal
