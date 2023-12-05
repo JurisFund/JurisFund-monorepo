@@ -11,6 +11,7 @@
     "dev": "turbo run dev --no-daemon --concurrency=13",
     "dev:jurisfund": "turbo run dev --no-daemon --concurrency=13 --filter=jurisfund",
     "dev:lending": "turbo run dev --no-daemon --concurrency=13 --filter=lending",
+    "dev:admins": "turbo run dev --no-daemon --concurrency=13 --filter=admins",
     "build": "turbo run build --no-daemon",
     "check": "turbo run check --no-daemon",
     "storybook:dev": "turbo run storybook:dev --no-daemon",
