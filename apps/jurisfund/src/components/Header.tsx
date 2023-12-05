@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import { ConnectWallet, useAddress, useWallet } from "@thirdweb-dev/react";
+import React from "react";
 import { type FunctionComponent, useEffect, useMemo, useState } from "react";
 import { Container } from "ui";
 import { Navigation } from "ui/components/Navigation";
