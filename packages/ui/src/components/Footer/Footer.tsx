@@ -9,16 +9,17 @@ import type { NavigationLink } from "../Navigation/types";
 
 export interface FooterProps {
   links?: readonly NavigationLink[];
+  customLogo?: React.ReactNode;
 }
 
 export const Footer: FunctionComponent<FooterProps> = (props) => {
-  const { links = [] } = props;
+  const { links = [], customLogo } = props;
 
   return (
     <footer>
       <Container>
         <div className="py-16">
-          <Logo className="mx-auto h-10 w-auto" />
+          {customLogo !== undefined ? customLogo : <Logo className="mx-auto h-10 w-auto" />}
           <nav aria-label="quick links" className="mt-10 text-sm">
             <div className="xs:flex-row flex flex-col justify-center gap-x-6">
               {links.map(({ classNameMobile: _classNameMobile, ...link }) => (

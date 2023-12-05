@@ -1,4 +1,5 @@
 import { ConnectWallet, useAddress, useWallet } from "@thirdweb-dev/react";
+import NextImage from "next/image";
 import { type FunctionComponent, useEffect, useMemo, useState } from "react";
 import { Container } from "ui";
 import { Navigation } from "ui/components/Navigation";
@@ -55,7 +56,18 @@ const PageHeader: FunctionComponent = () => {
   return (
     <header className=" py-10 ">
       <Container className="flex justify-evenly">
-        <Navigation {...links} />
+        <Navigation
+          {...links}
+          customLogo={
+            <NextImage
+              src="/jf-letters-original.png"
+              alt="Jurisfund"
+              width={60}
+              height={60}
+              className="border-2 border-yellow-950"
+            />
+          }
+        />
         <ConnectWallet
           theme={"light"}
           auth={{ loginOptional: false }}
