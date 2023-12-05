@@ -1,10 +1,10 @@
-// import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import Head from "next/head";
-// import { Container } from "ui";
 import NextLink from "next/link";
+// import { useMediaQuery } from "usehooks-ts";
 
-// export default function Home({ pwa }: InferGetServerSidePropsType<typeof getServerSideProps>) {
 export default function Home() {
+  // const matches = useMediaQuery("(max-width: 480px)");
+
   return (
     <>
       <Head>
@@ -15,13 +15,18 @@ export default function Home() {
         />
       </Head>
 
-      <section className="relative">
+      <section className="w-full">
         {/* Illustration behind hero content */}
-        <div
-          className="-z-1 pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 transform"
+        {/* <div
+          className="pointer-events-none absolute bottom-0 left-1/2 -z-10 w-full -translate-x-1/2 transform"
           aria-hidden="true"
         >
-          <svg width="1360" height="578" viewBox="0 0 1360 578" xmlns="http://www.w3.org/2000/svg">
+          <svg
+            width={matches === true ? "1280" : "1360"}
+            height={matches === true ? "425" : "578"}
+            viewBox={matches === true ? "0 0 480 625" : "0 0 1360 578"}
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <defs>
               <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="illustration-01">
                 <stop stopColor="#89CFF0" offset="0%" />
@@ -34,9 +39,9 @@ export default function Home() {
               <circle cx="155" cy="443" r="64" />
             </g>
           </svg>
-        </div>
+        </div> */}
 
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="max-w-screen-xs mx-auto px-4 sm:px-6 md:max-w-6xl">
           {/* Hero content */}
           <div className="pb-14 pt-10 md:pb-20 md:pt-40">
             {/* Section header */}
