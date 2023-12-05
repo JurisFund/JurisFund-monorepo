@@ -72,9 +72,9 @@ export default function BorrowerApplicationFormPage() {
           content="JurisFund is a credit DeFi protocol backed by consumer pre-settlement funding. This protocol offers investors an opportunity to get exposure to a unique asset class, notable for its lack of correlation with broader market trends and its history of high returns."
         />
       </Head>
-      <section className="relative  gap-2 ">
+      <section className="relative w-[60%] gap-2">
         <form
-          className="bg-orange-200-900 mx-60 flex flex-col gap-4 rounded-md border-2 border-orange-300 p-4"
+          className="flex flex-col gap-4 rounded-md border-2 border-orange-300 bg-orange-100 p-4"
           onSubmit={(event) => {
             event.preventDefault();
             if (address === undefined) return;
@@ -313,7 +313,7 @@ export default function BorrowerApplicationFormPage() {
           ) : (
             <button
               type="submit"
-              className="bg-slate-600-800 mx-auto w-[50%] rounded-md border-2 border-indigo-700 p-2 text-indigo-400 hover:border-zinc-800 hover:bg-orange-300 hover:text-zinc-800 focus:outline-none"
+              className="mx-auto mt-16 w-[30%] rounded-md border-2 border-indigo-700 bg-slate-600 p-2 text-indigo-400 hover:border-zinc-800 hover:bg-orange-300 hover:text-zinc-800 focus:outline-none"
             >
               Submit
             </button>
