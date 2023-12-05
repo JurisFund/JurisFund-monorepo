@@ -1,17 +1,17 @@
 // import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import Head from "next/head";
 // import { Container } from "ui";
-import NextLink from "next/link";
+// import NextLink from "next/link";
 
 // export default function Home({ pwa }: InferGetServerSidePropsType<typeof getServerSideProps>) {
 export default function Home() {
   return (
     <>
       <Head>
-        <title>JurisFund | Home</title>
+        <title>JurisFund Lend | Home</title>
         <meta
           name="description"
-          content="JurisFund is a tokenized private credit protocol backed by consumer pre-settlement funding. This protocol offers investors an opportunity to get exposure to a unique asset class, notable for its lack of correlation with broader market trends and its history of high returns."
+          content="JurisFund is a credit DeFi protocol backed by consumer pre-settlement funding. This protocol offers investors an opportunity to get exposure to a unique asset class, notable for its lack of correlation with broader market trends and its history of high returns."
         />
       </Head>
 
@@ -38,17 +38,22 @@ export default function Home() {
 
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           {/* Hero content */}
-          <div className="pb-14 pt-10 md:pb-20 md:pt-40">
+          <div className="pb-12 pt-32 md:pb-20 md:pt-40">
             {/* Section header */}
             <div className="pb-12 text-center md:pb-16">
               <h1
-                className="leading-tighter mb-16 text-5xl font-extrabold tracking-tighter md:text-6xl"
+                className="leading-tighter mb-4 text-5xl font-extrabold tracking-tighter md:text-6xl"
                 data-aos="zoom-y-out"
               >
                 Juris
                 <span className="bg-gradient-to-r from-blue-500 to-teal-400 bg-clip-text text-transparent">
                   Fund
                 </span>
+                <br />
+                <span className="bg-gradient-to-r from-blue-500 to-teal-400 bg-clip-text text-transparent">
+                  Lending
+                </span>
+                Protocol
               </h1>
               <div className="mx-auto max-w-3xl">
                 <p
@@ -61,32 +66,30 @@ export default function Home() {
                   class, notable for its lack of correlation with broader market trends and its
                   history of high returns.
                 </p>
-                <div
-                  // className="content-between justify-between align-middle xl:mx-auto xl:max-w-xs"
-                  className="flex flex-col gap-14 pt-4 md:flex-row md:justify-start md:gap-0 md:pt-10"
+                DEV_NOTE: copmmented buttons block div in order to clean the page, leaving it here
+                for reference
+                {/* <div
+                  className="mx-auto max-w-xs sm:flex sm:max-w-none sm:justify-center"
                   data-aos="zoom-y-out"
                   data-aos-delay="300"
                 >
-                  <div
-                    className="w-full md:w-1/2"
-                    // className="relative"
-                  >
+                  <div>
                     <NextLink
-                      className="btn mb-4 w-full rounded-lg	bg-blue-600 p-4 text-white hover:bg-blue-400"
+                      className="btn mb-4 w-full rounded-lg	bg-blue-600 p-4 text-white hover:bg-blue-400 sm:mb-0 sm:w-auto"
                       href="/borrower/application"
                     >
                       Start as borrower
                     </NextLink>
                   </div>
-                  <div className="w-full md:w-1/2">
+                  <div>
                     <NextLink
-                      className="btn w-full rounded-lg	bg-gray-900 p-4 text-white hover:bg-gray-400 "
+                      className="btn w-full rounded-lg	bg-gray-900 p-4 text-white hover:bg-gray-400 sm:ml-4 sm:w-auto"
                       href="#0"
                     >
                       Enter investor portal
                     </NextLink>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
