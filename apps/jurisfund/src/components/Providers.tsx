@@ -25,6 +25,7 @@ const Providers = (props: Props) => {
         activeChain={Sepolia}
         supportedWallets={[
           smartWallet(
+            // localWallet(),
             embeddedWallet({
               auth: {
                 options: ["google", "apple", "email"],
