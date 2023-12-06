@@ -1,9 +1,11 @@
-import { useAddress } from "@thirdweb-dev/react";
+import { ConnectWallet, useAddress, useUser } from "@thirdweb-dev/react";
 import Head from "next/head";
 import NextLink from "next/link";
 
 export default function Home() {
   const address = useAddress();
+
+  const { isLoggedIn } = useUser();
 
   return (
     <>
@@ -29,6 +31,7 @@ export default function Home() {
                 <span className="bg-gradient-to-r from-blue-500 to-teal-400 bg-clip-text text-transparent">
                   Fund
                 </span>
+                <br />
                 <span className="bg-gradient-to-r from-blue-500 to-teal-400 bg-clip-text text-transparent">
                   Admin
                 </span>
@@ -55,7 +58,7 @@ export default function Home() {
                     className="w-full md:w-1/2"
                     // className="relative"
                   >
-                    {address !== undefined ? (
+                    {address !== undefined && isLoggedIn ? (
                       <NextLink
                         className="btn w-full rounded-lg	bg-gray-900 p-4 text-white hover:bg-gray-400 "
                         href="/applications"
@@ -63,12 +66,20 @@ export default function Home() {
                         Enter admin portal
                       </NextLink>
                     ) : (
-                      <NextLink
-                        className="btn mb-4 w-full rounded-lg	bg-blue-600 p-4 text-white hover:bg-blue-400"
-                        href="/login"
-                      >
-                        Login to your admin account
-                      </NextLink>
+                      <ConnectWallet
+                        theme={"light"}
+                        auth={{ loginOptional: false }}
+                        switchToActiveChain={true}
+                        modalSize={"compact"}
+                        welcomeScreen={{}}
+                        btnTitle="Login to your admin account"
+                      />
+                      // <NextLink
+                      //   className="btn mb-4 w-full rounded-lg	bg-blue-600 p-4 text-white hover:bg-blue-400"
+                      //   href="/login"
+                      // >
+                      //   Login to your admin account
+                      // </NextLink>
                     )}
                   </div>
                   {/* <div className="w-full md:w-1/2">
