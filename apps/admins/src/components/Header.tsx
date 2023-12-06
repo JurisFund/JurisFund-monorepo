@@ -1,4 +1,4 @@
-import { ConnectWallet } from "@thirdweb-dev/react";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 import NextImage from "next/image";
 import type { FunctionComponent /*, useEffect, useMemo, useState */ } from "react";
 import { Container } from "ui";
@@ -41,12 +41,11 @@ const PageHeader: FunctionComponent = () => {
             />
           }
         />
-        <ConnectWallet
-          theme={"light"}
-          auth={{ loginOptional: false }}
-          switchToActiveChain={true}
-          modalSize={"compact"}
-          welcomeScreen={{}}
+        <ConnectButton
+          accountStatus={{
+            smallScreen: "avatar",
+            largeScreen: "full",
+          }}
         />
       </Container>
     </header>
