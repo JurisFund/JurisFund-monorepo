@@ -39,7 +39,7 @@ export default function Home() {
               <div className="mx-auto max-w-3xl">
                 <div
                   // className="content-between justify-between align-middle xl:mx-auto xl:max-w-xs"
-                  className="flex flex-col gap-14 pt-4 md:flex-row md:justify-start md:gap-0 md:pt-10"
+                  className="flex w-full content-center items-center justify-center text-center "
                   data-aos="zoom-y-out"
                   data-aos-delay="300"
                 >
@@ -55,24 +55,9 @@ export default function Home() {
                         Enter admin portal
                       </NextLink>
                     ) : (
-                      <ConnectButton />
-
-                      // <NextLink
-                      //   className="btn mb-4 w-full rounded-lg	bg-blue-600 p-4 text-white hover:bg-blue-400"
-                      //   href="/login"
-                      // >
-                      //   Login to your admin account
-                      // </NextLink>
+                      <ConnectButton label="Login to your admin account" />
                     )}
                   </div>
-                  {/* <div className="w-full md:w-1/2">
-                    <NextLink
-                      className="btn w-full rounded-lg	bg-gray-900 p-4 text-white hover:bg-gray-400 "
-                      href="#0"
-                    >
-                      Enter investor portal
-                    </NextLink>
-                  </div> */}
                 </div>
               </div>
             </div>

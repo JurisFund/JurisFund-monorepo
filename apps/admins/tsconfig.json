@@ -6,6 +6,6 @@
       "@/*": ["*"]
     }
   },
-  "include": ["next-env.d.ts", "src", "e2e"],
+  "include": ["next-env.d.ts", "src", "e2e", ".well-known/walletconnect.txt"],
   "exclude": ["dist", "node_modules"]
 }
