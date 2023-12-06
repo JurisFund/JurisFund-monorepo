@@ -1,0 +1,50 @@
+{
+  "private": true,
+  "name": "admins",
+  "version": "0.0.0",
+  "scripts": {
+    "clean": "rm -rf .next .swc .turbo coverage dist e2e-report e2e-results out storybook-static",
+    "dev": "next dev --port 3001",
+    "build": "next build",
+    "lint": "next lint",
+    "test:unit": "jest --ci --coverage",
+    "test:watch": "jest --watch",
+    "storybook:dev": "storybook dev --quiet --port 6001",
+    "storybook:build": "storybook build"
+  },
+  "dependencies": {
+    "@headlessui/react": "1.7.17",
+    "@privy-io/react-auth": "^1.48.0",
+    "@t3-oss/env-nextjs": "^0.7.1",
+    "@tanstack/react-query": "^4.35.3",
+    "@thirdweb-dev/auth": "^4.1.12",
+    "@thirdweb-dev/chains": "^0.1.59",
+    "@thirdweb-dev/react": "^4.1.10",
+    "@thirdweb-dev/sdk": "^4.0.17",
+    "@trpc/client": "^10.44.1",
+    "@trpc/next": "^10.44.1",
+    "@trpc/server": "^10.44.1",
+    "clsx": "2.0.0",
+    "database": "workspace:*",
+    "ethers": "5",
+    "next": "14.0.3",
+    "next-auth": "^4.24.5",
+    "next-seo": "^6.4.0",
+    "next-themes": "0.2.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "siwe": "^2.1.4",
+    "superjson": "^2.2.1",
+    "ui": "workspace:*",
+    "usehooks-ts": "^2.9.1",
+    "utils": "workspace:*",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "jest-config": "workspace:*",
+    "next-config": "workspace:*",
+    "storybook-config": "workspace:*",
+    "tailwindcss-config": "workspace:*",
+    "typescript-config": "workspace:*"
+  }
+}
