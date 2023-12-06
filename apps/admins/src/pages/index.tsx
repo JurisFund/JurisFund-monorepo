@@ -1,11 +1,10 @@
-import { ConnectWallet, useAddress, useUser } from "@thirdweb-dev/react";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Head from "next/head";
 import NextLink from "next/link";
+import { useAccount } from "wagmi";
 
 export default function Home() {
-  const address = useAddress();
-
-  const { isLoggedIn } = useUser();
+  const { address, isConnected } = useAccount();
 
   return (
     <>
@@ -48,7 +47,7 @@ export default function Home() {
                     className="w-full"
                     // className="relative"
                   >
-                    {address !== undefined && isLoggedIn ? (
+                    {address !== undefined && isConnected ? (
                       <NextLink
                         className="btn w-full rounded-lg	bg-gray-900 p-4 text-white hover:bg-gray-400 "
                         href="/applications"
@@ -56,14 +55,8 @@ export default function Home() {
                         Enter admin portal
                       </NextLink>
                     ) : (
-                      <ConnectWallet
-                        theme={"light"}
-                        auth={{ loginOptional: false }}
-                        switchToActiveChain={true}
-                        modalSize={"compact"}
-                        welcomeScreen={{}}
-                        btnTitle="Log into your admin account"
-                      />
+                      <ConnectButton />
+
                       // <NextLink
                       //   className="btn mb-4 w-full rounded-lg	bg-blue-600 p-4 text-white hover:bg-blue-400"
                       //   href="/login"
