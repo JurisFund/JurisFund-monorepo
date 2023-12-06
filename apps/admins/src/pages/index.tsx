@@ -31,6 +31,7 @@ export default function Home() {
                 <span className="bg-gradient-to-r from-blue-500 to-teal-400 bg-clip-text text-transparent">
                   Fund
                 </span>
+                <br />
                 <span className="bg-gradient-to-r from-blue-500 to-teal-400 bg-clip-text text-transparent">
                   Admin
                 </span>
