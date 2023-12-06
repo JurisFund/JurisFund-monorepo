@@ -1,4 +1,4 @@
-import { randomBytes } from "crypto";
+// import { randomBytes } from "crypto";
 import Document, {
   type DocumentContext,
   type DocumentInitialProps,
@@ -18,14 +18,14 @@ class MyDocument extends Document {
 
   override render() {
     // const csp = getCspContent(NextScript.getInlineScriptSource(this.props));
-    const nonce = randomBytes(128).toString("base64");
-    const csp = `object-src 'none'; base-uri 'none'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https: http: 'nonce-${nonce}' 'strict-dynamic'`;
+    // const nonce = randomBytes(128).toString("base64");
+    // const csp = `object-src 'none'; base-uri 'none'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https: http: 'nonce-${nonce}' 'strict-dynamic'`;
 
     return (
       <Html lang="en">
-        <Head nonce={nonce}>
+        <Head /* nonce={nonce} */>
           {/* <meta httpEquiv="Content-Security-Policy" content={csp} /> */}
-          <meta httpEquiv="Content-Security-Policy" content={csp} />
+          {/* <meta httpEquiv="Content-Security-Policy" content={csp} /> */}
 
           <meta name="JurisFund Admin" content="JurisFund Admin" />
           <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -57,7 +57,7 @@ class MyDocument extends Document {
         </Head>
         <body className="bg-neutral-50 dark:bg-neutral-900">
           <Main />
-          <NextScript nonce={nonce} />
+          <NextScript /* nonce={nonce} */ />
         </body>
       </Html>
     );
