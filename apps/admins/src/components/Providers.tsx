@@ -34,8 +34,8 @@ interface Props {
 
 const Providers = (props: Props) => {
   return (
-    <WagmiConfig config={wagmiConfig}>
-      <ThemeProvider attribute="class">
+    <ThemeProvider attribute="class">
+      <WagmiConfig config={wagmiConfig}>
         <SessionProvider refetchInterval={0} session={props.session}>
           <RainbowKitSiweNextAuthProvider>
             <RainbowKitProvider
@@ -53,8 +53,8 @@ const Providers = (props: Props) => {
             </RainbowKitProvider>
           </RainbowKitSiweNextAuthProvider>
         </SessionProvider>
-      </ThemeProvider>
-    </WagmiConfig>
+      </WagmiConfig>
+    </ThemeProvider>
   );
 };
 
