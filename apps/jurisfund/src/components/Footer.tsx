@@ -8,6 +8,11 @@ const links = [
   { children: "Cases We Fund", href: "/cases", variant: "text" },
   { children: "About", href: "/about", variant: "text" },
   { children: "Testimonials", href: "/testimonials", variant: "text" },
+  {
+    children: "Investors App",
+    href: "https://jurisfund-lending.vercel.app",
+    variant: "text",
+  },
 ] as const;
 
 const PageFooter: FunctionComponent = () => {

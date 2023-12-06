@@ -11,15 +11,13 @@ const links = {
     { children: "Cases We Fund", href: "/cases", variant: "text" },
     { children: "About", href: "/about", variant: "text" },
     { children: "Testimonials", href: "/testimonials", variant: "text" },
+    {
+      children: "Investors App",
+      href: "https://jurisfund-lending.vercel.app",
+      variant: "text",
+    },
   ],
   rightLinks: [
-    // {
-    //   children: "Sign\u00a0in",
-    //   className: "hidden xs:block",
-    //   classNameMobile: "block xs:hidden",
-    //   href: "/signin",
-    //   variant: "text",
-    // },
     // {
     //   href: "/",
     //   variant: "",
