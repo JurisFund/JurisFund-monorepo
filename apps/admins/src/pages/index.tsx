@@ -39,12 +39,12 @@ export default function Home() {
               <div className="mx-auto max-w-3xl">
                 <div
                   // className="content-between justify-between align-middle xl:mx-auto xl:max-w-xs"
-                  className="flex w-full content-center items-center justify-center text-center "
+                  className="flex w-full "
                   data-aos="zoom-y-out"
                   data-aos-delay="300"
                 >
                   <div
-                    className="w-full"
+                    className="flex w-full content-center items-center justify-center text-center"
                     // className="relative"
                   >
                     {address !== undefined && isConnected ? (
