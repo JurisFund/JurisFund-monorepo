@@ -120,7 +120,7 @@ export const authOptions: (ctxReq: CtxOrReq) => NextAuthOptions = ({
             user = await prisma.user.create({
               data: {
                 address: fields.address,
-                image: "https://www.developerdao.com/D_D_logo-dark.svg",
+                // image: "https://www.developerdao.com/D_D_logo-dark.svg",
               },
             });
 
