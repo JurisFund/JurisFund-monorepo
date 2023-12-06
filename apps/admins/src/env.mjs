@@ -27,13 +27,13 @@ const server = z.object({
  */
 const client = z.object({
   NEXT_PUBLIC_THIRDWEB_CLIENT_ID: z.string(),
-  NEXT_PUBLIC_NEXTAUTH_URL: z.preprocess(
-    // This makes Vercel deployments not fail if you don't set NEXTAUTH_URL
-    // Since NextAuth.js automatically uses the VERCEL_URL if present.
-    (str) => process.env["VERCEL_URL"] ?? str,
-    // VERCEL_URL doesn't include `https` so it cant be validated as a URL
-    process.env.VERCEL ? z.string().min(1) : z.string().url(),
-  ),
+  // NEXT_PUBLIC_NEXTAUTH_URL: z.preprocess(
+  //   // This makes Vercel deployments not fail if you don't set NEXTAUTH_URL
+  //   // Since NextAuth.js automatically uses the VERCEL_URL if present.
+  //   (str) => process.env["VERCEL_URL"] ?? str,
+  //   // VERCEL_URL doesn't include `https` so it cant be validated as a URL
+  //   process.env.VERCEL ? z.string().min(1) : z.string().url(),
+  // ),
   // NEXT_PUBLIC_CLIENTVAR: z.string().min(1),
   NEXT_PUBLIC_WALLETCONNECTCLOUD_PROJECT_ID: z.string().min(1),
 });
@@ -50,7 +50,6 @@ const processEnv = {
   NEXT_PUBLIC_THIRDWEB_CLIENT_ID: process.env["NEXT_PUBLIC_THIRDWEB_CLIENT_ID"],
   NEXTAUTH_SECRET: process.env["NEXTAUTH_SECRET"],
   NEXTAUTH_URL: process.env["NEXTAUTH_URL"],
-  NEXT_PUBLIC_NEXTAUTH_URL: process.env["NEXT_PUBLIC_NEXTAUTH_URL"],
   NEXT_PUBLIC_WALLETCONNECTCLOUD_PROJECT_ID:
     process.env["NEXT_PUBLIC_WALLETCONNECTCLOUD_PROJECT_ID"],
   // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
