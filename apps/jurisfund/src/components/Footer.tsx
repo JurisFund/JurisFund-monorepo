@@ -3,9 +3,16 @@ import type { FunctionComponent } from "react";
 import { Footer } from "ui";
 
 const links = [
-  { children: "Features", href: "#features", variant: "text" },
-  { children: "Testimonials", href: "#testimonials", variant: "text" },
-  { children: "Pricing", href: "#pricing", variant: "text" },
+  { children: "Apply for funding", href: "/borrower", variant: "text" },
+  { children: "How It Works", href: "/howitworks", variant: "text" },
+  { children: "Cases We Fund", href: "/cases", variant: "text" },
+  { children: "About", href: "/about", variant: "text" },
+  { children: "Testimonials", href: "/testimonials", variant: "text" },
+  {
+    children: "Investors App",
+    href: "https://jurisfund-lending.vercel.app",
+    variant: "text",
+  },
 ] as const;
 
 const PageFooter: FunctionComponent = () => {

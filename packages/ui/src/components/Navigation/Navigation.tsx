@@ -23,7 +23,7 @@ export const Navigation: FunctionComponent<NavigationProps> = (props) => {
         </Link>
         <div className="hidden gap-x-5 md:flex">
           {leftLinks.map(({ classNameMobile: _classNameMobile, ...link }) => (
-            <ButtonLink {...link} key={link.href.toString()} className="text-2xl" />
+            <ButtonLink {...link} key={link.href.toString()} className="" />
           ))}
         </div>
       </div>

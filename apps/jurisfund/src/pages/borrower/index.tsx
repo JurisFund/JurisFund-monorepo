@@ -1,14 +1,7 @@
-// import Image from "next/image";
-// import { ReactNode } from "react";
-import { ConnectWallet /*, useAddress, useWallet */ } from "@thirdweb-dev/react";
+// import { ConnectWallet /*, useAddress, useWallet */ } from "@thirdweb-dev/react";
 import Head from "next/head";
+import NextLink from "next/link";
 import * as React from "react";
-// import { Button } from "ui";
-
-// interface Props {
-//   children: ReactNode
-//   content: Omit<Authors, '_id' | '_raw' | 'body'>
-// }
 
 export default function BorrowersPage() {
   return (
@@ -70,7 +63,13 @@ export default function BorrowersPage() {
           </div>
         </div>
         <div className="items-center p-14 text-center">
-          <ConnectWallet
+          <NextLink
+            className="btn mb-4 w-full rounded-lg	bg-blue-600 p-4 text-white hover:bg-blue-400"
+            href="/borrower/apply"
+          >
+            Get Started
+          </NextLink>
+          {/* <ConnectWallet
             theme={"light"}
             auth={{ loginOptional: false }}
             switchToActiveChain={true}
@@ -83,10 +82,10 @@ export default function BorrowersPage() {
               },
               title: "Get Started to Jurisfund",
             }}
-            btnTitle="Get Started"
+            btnTitle="Get Started" 
             // dev_note: after login this button should redirect to "/borrower/apply"
             // className="rounded bg-blue-500 font-bold hover:bg-blue-700 md:w-[35%] md:px-4 md:py-2"
-          />
+          /> */}
         </div>
       </div>
     </>

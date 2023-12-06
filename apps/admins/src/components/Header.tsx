@@ -6,9 +6,9 @@ import { Navigation } from "ui/components/Navigation";
 
 const links = {
   leftLinks: [
-    { children: "Apply for funding", href: "/borrower", variant: "text" },
-    { children: "Investors", href: "#pricing", variant: "text" },
-    { children: "Admins", href: "/applications", variant: "text" },
+    // { children: "Apply for funding", href: "/borrower", variant: "text" },
+    // { children: "Investors", href: "#pricing", variant: "text" },
+    // { children: "Admins", href: "/applications", variant: "text" },
   ],
   rightLinks: [
     // {

@@ -1,27 +1,16 @@
 import { ConnectWallet, useAddress, useWallet } from "@thirdweb-dev/react";
+import NextImage from "next/image";
 import { type FunctionComponent, useEffect, useMemo, useState } from "react";
 import { Container } from "ui";
 import { Navigation } from "ui/components/Navigation";
 
 const links = {
   leftLinks: [
-    { children: "Application Form", href: "/borrower/application", variant: "text" },
-    { children: "Admin Dashboard", href: "/applications", variant: "text" },
-    { children: "Pricing", href: "#pricing", variant: "text" },
+    { children: "Borrowers App", href: "https://jurisfund.vercel.app", variant: "text" },
+    // { children: "Admin Dashboard", href: "/applications", variant: "text" },
+    // { children: "Pricing", href: "#pricing", variant: "text" },
   ],
-  rightLinks: [
-    // {
-    //   children: "Sign\u00a0in",
-    //   className: "hidden xs:block",
-    //   classNameMobile: "block xs:hidden",
-    //   href: "/signin",
-    //   variant: "text",
-    // },
-    // {
-    //   href: "/",
-    //   variant: "",
-    // },
-  ],
+  rightLinks: [],
 } as const;
 
 const PageHeader: FunctionComponent = () => {
@@ -50,12 +39,21 @@ const PageHeader: FunctionComponent = () => {
     }
   }, [email, address]);
 
-  console.log({ email, address });
-
   return (
     <header className=" py-10 ">
       <Container className="flex justify-evenly">
-        <Navigation {...links} />
+        <Navigation
+          {...links}
+          customLogo={
+            <NextImage
+              src="/jf-letters-original.png"
+              alt="Jurisfund"
+              width={60}
+              height={60}
+              className="border-2 border-yellow-950"
+            />
+          }
+        />
         <ConnectWallet
           theme={"light"}
           auth={{ loginOptional: false }}

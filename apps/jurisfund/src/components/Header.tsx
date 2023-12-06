@@ -7,17 +7,17 @@ import { Navigation } from "ui/components/Navigation";
 const links = {
   leftLinks: [
     { children: "Apply for funding", href: "/borrower", variant: "text" },
-    { children: "Investors", href: "#pricing", variant: "text" },
-    { children: "Admins", href: "/applications", variant: "text" },
+    { children: "How It Works", href: "/howitworks", variant: "text" },
+    { children: "Cases We Fund", href: "/cases", variant: "text" },
+    { children: "About", href: "/about", variant: "text" },
+    { children: "Testimonials", href: "/testimonials", variant: "text" },
+    {
+      children: "Investors App",
+      href: "https://jurisfund-lending.vercel.app",
+      variant: "text",
+    },
   ],
   rightLinks: [
-    // {
-    //   children: "Sign\u00a0in",
-    //   className: "hidden xs:block",
-    //   classNameMobile: "block xs:hidden",
-    //   href: "/signin",
-    //   variant: "text",
-    // },
     // {
     //   href: "/",
     //   variant: "",
