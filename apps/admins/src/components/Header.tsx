@@ -27,8 +27,8 @@ const links = {
 
 const PageHeader: FunctionComponent = () => {
   return (
-    <header className=" py-10 ">
-      <Container className="flex justify-between md:justify-evenly">
+    <header className="py-10 ">
+      <Container className="flex justify-between">
         <Navigation
           {...links}
           customLogo={
@@ -42,9 +42,14 @@ const PageHeader: FunctionComponent = () => {
           }
         />
         <ConnectButton
+          chainStatus={{
+            smallScreen: "full",
+            largeScreen: "full",
+          }}
+          showBalance={false}
           accountStatus={{
             smallScreen: "avatar",
-            largeScreen: "full",
+            largeScreen: "avatar",
           }}
         />
       </Container>
