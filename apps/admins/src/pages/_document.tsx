@@ -27,10 +27,10 @@ class MyDocument extends Document {
           {/* <meta httpEquiv="Content-Security-Policy" content={csp} /> */}
           <meta httpEquiv="Content-Security-Policy" content={csp} />
 
-          <meta name="JurisFund" content="JurisFund" />
+          <meta name="JurisFund Admin" content="JurisFund Admin" />
           <meta name="apple-mobile-web-app-capable" content="yes" />
           <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-          <meta name="apple-mobile-web-app-title" content="JurisFund" />
+          <meta name="apple-mobile-web-app-title" content="JurisFund Admin" />
           <meta
             name="description"
             content="JurisFund is a private credit protocol backed by consumer pre-settlement funding.

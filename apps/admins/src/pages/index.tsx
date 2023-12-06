@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>JurisFund | Home</title>
+        <title>JurisFund Admin Admin | Home</title>
         <meta
           name="description"
           content="JurisFund is a tokenized private credit protocol backed by consumer pre-settlement funding. This protocol offers investors an opportunity to get exposure to a unique asset class, notable for its lack of correlation with broader market trends and its history of high returns."
@@ -62,7 +62,7 @@ export default function Home() {
                         switchToActiveChain={true}
                         modalSize={"compact"}
                         welcomeScreen={{}}
-                        btnTitle="Login to your admin account"
+                        btnTitle="Log into your admin account"
                       />
                       // <NextLink
                       //   className="btn mb-4 w-full rounded-lg	bg-blue-600 p-4 text-white hover:bg-blue-400"
