@@ -1,5 +1,5 @@
 import { Sepolia } from "@thirdweb-dev/chains";
-import { metamaskWallet, ThirdwebProvider } from "@thirdweb-dev/react";
+import { /* metamaskWallet, */ ThirdwebProvider } from "@thirdweb-dev/react";
 import type { Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import { ThemeProvider } from "next-themes";
@@ -19,12 +19,7 @@ const Providers = (props: Props) => {
         <ThirdwebProvider
           clientId={env.NEXT_PUBLIC_THIRDWEB_CLIENT_ID}
           activeChain={Sepolia}
-          supportedWallets={[
-            metamaskWallet({
-              projectId: env.NEXT_PUBLIC_WALLETCONNECTCLOUD_PROJECT_ID,
-              recommended: true,
-            }),
-          ]}
+          // supportedWallets={[metamaskWallet()]}
           authConfig={{
             domain: env.NEXT_PUBLIC_NEXTAUTH_URL,
             authUrl: "/api/auth",
