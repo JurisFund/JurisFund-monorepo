@@ -38,16 +38,6 @@ export default function Home() {
                 Panel
               </h1>
               <div className="mx-auto max-w-3xl">
-                <p
-                  className="mb-8 text-xl text-gray-600"
-                  data-aos="zoom-y-out"
-                  data-aos-delay="150"
-                >
-                  JurisFund is a private credit protocol backed by consumer pre-settlement funding.
-                  This protocol offers investors an opportunity to get exposure to a unique asset
-                  class, notable for its lack of correlation with broader market trends and its
-                  history of high returns.
-                </p>
                 <div
                   // className="content-between justify-between align-middle xl:mx-auto xl:max-w-xs"
                   className="flex flex-col gap-14 pt-4 md:flex-row md:justify-start md:gap-0 md:pt-10"
@@ -55,7 +45,7 @@ export default function Home() {
                   data-aos-delay="300"
                 >
                   <div
-                    className="w-full md:w-1/2"
+                    className="w-full"
                     // className="relative"
                   >
                     {address !== undefined && isLoggedIn ? (
