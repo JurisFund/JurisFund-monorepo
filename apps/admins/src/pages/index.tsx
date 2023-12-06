@@ -20,7 +20,7 @@ export default function Home() {
       <section className="w-full">
         <div className="max-w-screen-xs mx-auto px-4 sm:px-6 md:max-w-6xl">
           {/* Hero content */}
-          <div className="pb-14 pt-10 md:pb-20 md:pt-40">
+          <div className="pb-14 pt-10 md:pb-20 md:pt-20">
             {/* Section header */}
             <div className="pb-12 text-center md:pb-16">
               <h1
