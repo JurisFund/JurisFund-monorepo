@@ -1,9 +1,5 @@
-// import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import Head from "next/head";
-// import { Container } from "ui";
-// import NextLink from "next/link";
 
-// export default function Home({ pwa }: InferGetServerSidePropsType<typeof getServerSideProps>) {
 export default function Home() {
   return (
     <>
