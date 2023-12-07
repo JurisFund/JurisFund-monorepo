@@ -49,7 +49,7 @@ const PageHeader: FunctionComponent = () => {
           showBalance={false}
           accountStatus={{
             smallScreen: "avatar",
-            largeScreen: "avatar",
+            largeScreen: "full",
           }}
         />
       </Container>

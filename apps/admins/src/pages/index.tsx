@@ -1,10 +1,11 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Head from "next/head";
 import NextLink from "next/link";
-import { useAccount } from "wagmi";
+
+import { useAppContext } from "@/contexts/AppContext";
 
 export default function Home() {
-  const { address, isConnected } = useAccount();
+  const { connectedAddress, isConnected, connectedAddresOwnsAdminNFT } = useAppContext();
 
   return (
     <>
@@ -47,13 +48,19 @@ export default function Home() {
                     className="flex w-full content-center items-center justify-center text-center"
                     // className="relative"
                   >
-                    {address !== undefined && isConnected ? (
-                      <NextLink
-                        className="btn w-full rounded-lg	bg-gray-900 p-4 text-white hover:bg-gray-400 "
-                        href="/applications"
-                      >
-                        Enter admin portal
-                      </NextLink>
+                    {connectedAddress !== "" && isConnected ? (
+                      connectedAddresOwnsAdminNFT ? (
+                        <NextLink
+                          className="btn w-full rounded-lg	bg-gray-900 p-4 text-white hover:bg-gray-400 "
+                          href="/applications"
+                        >
+                          Enter admin portal
+                        </NextLink>
+                      ) : (
+                        <span className="w-full rounded-lg bg-red-600  p-4 text-white hover:bg-red-900 ">
+                          Unauthorized. Change wallet
+                        </span>
+                      )
                     ) : (
                       <ConnectButton label="Login to your admin account" />
                     )}

@@ -23,7 +23,7 @@ declare module "next-auth" {
   interface Session extends DefaultSession {
     user: {
       id: string;
-      // image: string;
+      image: string;
       // ...other properties
       // role: UserRole;
     } & DefaultSession["user"];
@@ -57,8 +57,7 @@ export const authOptions: (ctxReq: CtxOrReq) => NextAuthOptions = ({
     }),
   },
   session: { strategy: "jwt" },
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  secret: env.NEXTAUTH_SECRET!, // in case you want pass this along for other functionality
+  secret: env.NEXTAUTH_SECRET != undefined ? env.NEXTAUTH_SECRET : "", // in case you want pass this along for other functionality
   // adapter: PrismaAdapter(prisma), // Not meant for type 'credentials' (used for db sessions)
   // debug: true, // For debugging
   providers: [
@@ -117,7 +116,7 @@ export const authOptions: (ctxReq: CtxOrReq) => NextAuthOptions = ({
             user = await prisma.user.create({
               data: {
                 address: fields.address,
-                // image: "https://www.developerdao.com/D_D_logo-dark.svg",
+                image: "https://www.developerdao.com/D_D_logo-dark.svg",
               },
             });
 
