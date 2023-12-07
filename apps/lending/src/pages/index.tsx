@@ -34,7 +34,7 @@ export default function Home() {
 
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           {/* Hero content */}
-          <div className="pb-12 pt-32 md:pb-20 md:pt-40">
+          <div className="pb-12 pt-24 md:pb-20 md:pt-24">
             {/* Section header */}
             <div className="pb-12 text-center md:pb-16">
               <h1
@@ -51,41 +51,50 @@ export default function Home() {
                 </span>
                 Protocol
               </h1>
-              <div className="mx-auto max-w-3xl">
-                <p
-                  className="mb-8 text-xl text-gray-600"
-                  data-aos="zoom-y-out"
-                  data-aos-delay="150"
-                >
-                  JurisFund is a credit DeFi protocol backed by consumer pre-settlement funding.
-                  This protocol offers investors an opportunity to get exposure to a unique asset
-                  class, notable for its lack of correlation with broader market trends and its
-                  history of high returns.
-                </p>
+              <div className="mx-auto mt-8 max-w-3xl">
+                <div className="flex justify-center  ">
+                  {/* Here is your card */}
+                  <div className="transform  transition duration-300 hover:scale-105">
+                    <div className="relative z-0 m-[12px] block min-w-[200px] max-w-[262px] overflow-hidden rounded-[4px] bg-[#black] bg-gradient-to-bl from-black to-blue-500 p-[32px]  no-underline contrast-50  duration-500 hover:contrast-100">
+                      <p className="text-[17px] font-normal leading-[14px] text-[#white]">
+                        Max Pool Size
+                      </p>
+                      <p className="mt-2 font-mono text-lg  leading-[14px] text-[#white]">
+                        500,000 USDC
+                      </p>
+                    </div>
+                  </div>
+                  <div className="transform transition duration-300 hover:scale-105">
+                    <div className="relative z-0 m-[12px] block min-w-[200px] max-w-[262px] overflow-hidden rounded-[4px] bg-[#black] bg-gradient-to-bl from-black to-blue-500 p-[32px]  no-underline contrast-50  duration-500 hover:contrast-100">
+                      <p className="text-[17px] font-normal leading-[14px] text-[#white]">
+                        Projected APY
+                      </p>
+                      <p className="mt-2 font-mono text-lg  leading-[14px] text-[#white]">15%</p>
+                    </div>
+                  </div>
+                  <div className="transform transition duration-300 hover:scale-105">
+                    <div className="relative z-0 m-[12px] block min-w-[200px] max-w-[262px] overflow-hidden rounded-[4px] bg-[#black] bg-gradient-to-bl from-black to-blue-500 p-[32px]  no-underline contrast-50  duration-500 hover:contrast-100">
+                      <p className="text-[17px] font-normal leading-[14px] text-[#white]">
+                        Loan Terms
+                      </p>
+                      <p className="mt-2 font-mono  text-lg leading-[14px] text-[#white]">
+                        12 months
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className=" ">
+                  <button
+                    className="text-md mt-12 inline-flex 
+        animate-bounce rounded-lg bg-gradient-to-r from-blue-500 to-teal-400 px-4 py-2 font-medium tracking-wide text-white hover:animate-none 
+        focus:animate-none"
+                  >
+                    <span className="ml-2 font-bold uppercase">Deposit USDC</span>
+                  </button>
+                </div>
+
                 {/* DEV_NOTE: copmmented buttons block div in order to clean the page, leaving it here
                 for reference */}
-                {/* <div
-                  className="mx-auto max-w-xs sm:flex sm:max-w-none sm:justify-center"
-                  data-aos="zoom-y-out"
-                  data-aos-delay="300"
-                >
-                  <div>
-                    <NextLink
-                      className="btn mb-4 w-full rounded-lg	bg-blue-600 p-4 text-white hover:bg-blue-400 sm:mb-0 sm:w-auto"
-                      href="/borrower/application"
-                    >
-                      Start as borrower
-                    </NextLink>
-                  </div>
-                  <div>
-                    <NextLink
-                      className="btn w-full rounded-lg	bg-gray-900 p-4 text-white hover:bg-gray-400 sm:ml-4 sm:w-auto"
-                      href="#0"
-                    >
-                      Enter investor portal
-                    </NextLink>
-                  </div>
-                </div> */}
               </div>
             </div>
           </div>
