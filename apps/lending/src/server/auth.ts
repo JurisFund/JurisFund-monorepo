@@ -1,7 +1,3 @@
-/* eslint-disable @typescript-eslint/strict-boolean-expressions */
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-/* eslint-disable @typescript-eslint/no-redundant-type-constituents */
 // Imports
 // ========================================================
 import { prisma } from "database";
@@ -13,7 +9,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { getCsrfToken } from "next-auth/react";
 import { SiweMessage } from "siwe";
 
-import { env } from "@/env.mjs";
+// import { env } from "@/env.mjs";
 
 // Types
 // ========================================================
@@ -61,7 +57,7 @@ export const authOptions: (ctxReq: CtxOrReq) => NextAuthOptions = ({
     }),
   },
   session: { strategy: "jwt" },
-  secret: env.NEXTAUTH_SECRET != undefined ? env.NEXTAUTH_SECRET : "", // in case you want pass this along for other functionality
+  secret: "", // env.NEXTAUTH_SECRET != undefined ? env.NEXTAUTH_SECRET : "", // in case you want pass this along for other functionality
   // adapter: PrismaAdapter(prisma), // Not meant for type 'credentials' (used for db sessions)
   // debug: true, // For debugging
   providers: [
@@ -120,7 +116,7 @@ export const authOptions: (ctxReq: CtxOrReq) => NextAuthOptions = ({
             user = await prisma.user.create({
               data: {
                 address: fields.address,
-                image: "https://www.developerdao.com/D_D_logo-dark.svg",
+                // image: "https://www.developerdao.com/D_D_logo-dark.svg",
               },
             });
 

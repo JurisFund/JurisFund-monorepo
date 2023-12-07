@@ -5,7 +5,7 @@ export default function NotFound() {
   return (
     <>
       <Head>
-        <title>Turbo Monorepo — Page Not Found</title>
+        <title>JurisFund Lend | Page Not Found</title>
         <meta name="description" content="Sorry, the page you're looking for isn't there." />
       </Head>
 
