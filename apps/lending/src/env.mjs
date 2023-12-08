@@ -5,7 +5,7 @@ import { z } from "zod";
  * built with invalid env vars.
  */
 const server = z.object({
-  // DATABASE_URL: z.string().url().optional(),
+  DATABASE_URL: z.string().url(),
   NODE_ENV: z.enum(["development", "test", "production"]),
   // NEXTAUTH_SECRET:
   //   process.env.NODE_ENV === "production" ? z.string().min(1) : z.string().min(1).optional(),
@@ -34,7 +34,7 @@ const client = z.object({
   //   // VERCEL_URL doesn't include `https` so it cant be validated as a URL
   //   process.env.VERCEL ? z.string().min(1) : z.string().url(),
   // ),
-  // NEXT_PUBLIC_CLIENTVAR: z.string().min(1),
+  NEXT_PUBLIC_WALLETCONNECTCLOUD_PROJECT_ID: z.string().min(1),
 });
 
 /**
@@ -44,9 +44,10 @@ const client = z.object({
  * @type {Record<keyof z.infer<typeof server> | keyof z.infer<typeof client>, string | undefined>}
  */
 const processEnv = {
-  // DATABASE_URL: process.env["DATABASE_URL"],
+  DATABASE_URL: process.env["DATABASE_URL"],
   NODE_ENV: process.env.NODE_ENV,
-  // NEXT_PUBLIC_THIRDWEB_CLIENT_ID: process.env["NEXT_PUBLIC_THIRDWEB_CLIENT_ID"],
+  NEXT_PUBLIC_WALLETCONNECTCLOUD_PROJECT_ID:
+    process.env["NEXT_PUBLIC_WALLETCONNECTCLOUD_PROJECT_ID"],
   // NEXTAUTH_SECRET: process.env["NEXTAUTH_SECRET"],
   // NEXTAUTH_URL: process.env["NEXTAUTH_URL"],
   // NEXT_PUBLIC_NEXTAUTH_URL: process.env["NEXT_PUBLIC_NEXTAUTH_URL"],
