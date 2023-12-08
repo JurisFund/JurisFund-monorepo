@@ -3,5 +3,11 @@
   "buildCommand": "pnpm build",
   "devCommand": "pnpm dev",
   "installCommand": "pnpm install",
-  "ignoreCommand": "git diff --quiet HEAD^ HEAD ./"
+  "ignoreCommand": "git diff --quiet HEAD^ HEAD ./",
+  "crons": [
+    {
+      "path": "/api/processDispense",
+      "schedule": "0 5 * * *"
+    }
+  ]
 }
