@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -82,13 +83,14 @@ export default function Home() {
                   </div>
                 </div>
                 <div>
-                  <button
+                  <Link
+                    href="/deposit"
                     className=" mt-12 inline-flex 
         animate-bounce rounded-lg bg-gradient-to-r from-blue-500 to-teal-400 px-4 py-2 text-xl font-medium tracking-wide text-white 
         hover:animate-none focus:animate-none"
                   >
                     <span className="ml-2 uppercase">Deposit USDC</span>
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>

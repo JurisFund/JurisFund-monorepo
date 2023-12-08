@@ -1,4 +1,4 @@
-// import { ConnectWallet, useAddress, useWallet } from "@thirdweb-dev/react";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 import NextImage from "next/image";
 import type { FunctionComponent } from "react";
 import { Container } from "ui";
@@ -14,31 +14,6 @@ const links = {
 } as const;
 
 const PageHeader: FunctionComponent = () => {
-  // const [email, setEmail] = useState<string | undefined>();
-  // const connectedWallet = useWallet("embeddedWallet");
-
-  // const address = useAddress();
-
-  // useEffect(() => {
-  //   if (connectedWallet) {
-  //     connectedWallet
-  //       .getEmail()
-  //       .then((email) => {
-  //         setEmail(email);
-  //       })
-  //       .catch((error) => {
-  //         console.error(error);
-  //       });
-  //   }
-  // }, [connectedWallet]);
-
-  // useMemo(() => {
-  //   if (email !== undefined && address !== undefined) {
-  //     // save email to global state
-  //     console.log({ email, address });
-  //   }
-  // }, [email, address]);
-
   return (
     <header className=" py-10 ">
       <Container className="flex justify-evenly">
@@ -54,13 +29,17 @@ const PageHeader: FunctionComponent = () => {
             />
           }
         />
-        {/* <ConnectWallet
-          theme={"light"}
-          auth={{ loginOptional: false }}
-          switchToActiveChain={true}
-          modalSize={"compact"}
-          welcomeScreen={{}}
-        /> */}
+        <ConnectButton
+          chainStatus={{
+            smallScreen: "full",
+            largeScreen: "full",
+          }}
+          showBalance={false}
+          accountStatus={{
+            smallScreen: "avatar",
+            largeScreen: "full",
+          }}
+        />
       </Container>
     </header>
   );
