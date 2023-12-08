@@ -17,7 +17,7 @@ const collection = db.collection("BorrowersTable");
 async function fetchBorrowers(): Promise<Borrower[]> {
   try {
     const borrowers = await collection
-      .find({ applicationStatus: "Approved", payoffDate: null })
+      .find({ applicationStatus: "Approved", loanInssuanseDate: null })
       .toArray();
     return borrowers as unknown as Borrower[];
   } catch (error) {
