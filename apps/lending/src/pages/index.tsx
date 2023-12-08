@@ -54,47 +54,42 @@ export default function Home() {
               <div className="mx-auto mt-8 max-w-3xl">
                 <div className="flex justify-center  ">
                   {/* Here is your card */}
-                  <div className="transform  transition duration-300 hover:scale-105">
-                    <div className="relative z-0 m-[12px] block min-w-[200px] max-w-[262px] overflow-hidden rounded-[4px] bg-[#black] bg-gradient-to-bl from-black to-blue-500 p-[32px]  no-underline contrast-50  duration-500 hover:contrast-100">
-                      <p className="text-[17px] font-normal leading-[14px] text-[#white]">
+                  <div className="transform transition duration-300 hover:scale-105">
+                    <div className="relative z-0 m-[12px] block min-w-[200px] max-w-[262px] overflow-hidden rounded-[4px] bg-gradient-to-bl from-blue-500 to-teal-400 p-[32px]  no-underline duration-500 hover:contrast-100">
+                      <p className="text-[17px] font-normal leading-[14px] text-white">
                         Max Pool Size
                       </p>
-                      <p className="mt-2 font-mono text-lg  leading-[14px] text-[#white]">
+                      <p className="mt-2 font-mono text-lg leading-[14px] text-white">
                         500,000 USDC
                       </p>
                     </div>
                   </div>
                   <div className="transform transition duration-300 hover:scale-105">
-                    <div className="relative z-0 m-[12px] block min-w-[200px] max-w-[262px] overflow-hidden rounded-[4px] bg-[#black] bg-gradient-to-bl from-black to-blue-500 p-[32px]  no-underline contrast-50  duration-500 hover:contrast-100">
-                      <p className="text-[17px] font-normal leading-[14px] text-[#white]">
+                    <div className="relative z-0 m-[12px] block min-w-[200px] max-w-[262px] overflow-hidden rounded-[4px] bg-gradient-to-bl from-blue-500 to-teal-400  p-[32px]  no-underline duration-500 hover:contrast-100">
+                      <p className="text-[17px] font-normal leading-[14px] text-white">
                         Projected APY
                       </p>
-                      <p className="mt-2 font-mono text-lg  leading-[14px] text-[#white]">15%</p>
+                      <p className="mt-2 font-mono text-lg  leading-[14px] text-white">15%</p>
                     </div>
                   </div>
                   <div className="transform transition duration-300 hover:scale-105">
-                    <div className="relative z-0 m-[12px] block min-w-[200px] max-w-[262px] overflow-hidden rounded-[4px] bg-[#black] bg-gradient-to-bl from-black to-blue-500 p-[32px]  no-underline contrast-50  duration-500 hover:contrast-100">
-                      <p className="text-[17px] font-normal leading-[14px] text-[#white]">
+                    <div className="relative z-0 m-[12px] block min-w-[200px] max-w-[262px] overflow-hidden rounded-[4px]  bg-gradient-to-bl from-blue-500 to-teal-400  p-[32px]  no-underline duration-500 hover:contrast-100">
+                      <p className="text-[17px] font-normal leading-[14px] text-white">
                         Loan Terms
                       </p>
-                      <p className="mt-2 font-mono  text-lg leading-[14px] text-[#white]">
-                        12 months
-                      </p>
+                      <p className="mt-2 font-mono text-lg leading-[14px] text-white">12 months</p>
                     </div>
                   </div>
                 </div>
-                <div className=" ">
+                <div>
                   <button
-                    className="text-md mt-12 inline-flex 
-        animate-bounce rounded-lg bg-gradient-to-r from-blue-500 to-teal-400 px-4 py-2 font-medium tracking-wide text-white hover:animate-none 
-        focus:animate-none"
+                    className=" mt-12 inline-flex 
+        animate-bounce rounded-lg bg-gradient-to-r from-blue-500 to-teal-400 px-4 py-2 text-xl font-medium tracking-wide text-white 
+        hover:animate-none focus:animate-none"
                   >
-                    <span className="ml-2 font-bold uppercase">Deposit USDC</span>
+                    <span className="ml-2 uppercase">Deposit USDC</span>
                   </button>
                 </div>
-
-                {/* DEV_NOTE: copmmented buttons block div in order to clean the page, leaving it here
-                for reference */}
               </div>
             </div>
           </div>
