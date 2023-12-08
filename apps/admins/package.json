@@ -17,7 +17,7 @@
     "@rainbow-me/rainbowkit": "^1.3.0",
     "@rainbow-me/rainbowkit-siwe-next-auth": "^0.3.4",
     "@t3-oss/env-nextjs": "^0.7.1",
-    "@tanstack/react-query": "^4.35.3",
+    "@tanstack/react-query": "^4.36.1",
     "@thirdweb-dev/auth": "^4.1.12",
     "@thirdweb-dev/chains": "^0.1.59",
     "@thirdweb-dev/react": "^4.1.10",
@@ -28,6 +28,8 @@
     "clsx": "2.0.0",
     "database": "workspace:*",
     "ethers": "5",
+    "mongodb": "^6.3.0",
+    "mongoose": "^8.0.3",
     "next": "14.0.3",
     "next-auth": "^4.24.5",
     "next-seo": "^6.4.0",
@@ -41,6 +43,7 @@
     "utils": "workspace:*",
     "viem": "^1.19.11",
     "wagmi": "^1.4.8",
+    "web3": "^4.3.0",
     "zod": "^3.22.4"
   },
   "devDependencies": {
