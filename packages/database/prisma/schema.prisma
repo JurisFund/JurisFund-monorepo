@@ -57,9 +57,9 @@ model BorrowersTable {
   applicationStatus String            @default("Pending") // Pending, Approved, Rejected
   loanAmount       String?
   walletAddress    String 
-  fixedAPY         String?
+  fixedAPY         String? // change it to fixedAPR (semantics)
   loanInssuanseDate DateTime?
   accruedInterest String?
   payoffDate       DateTime?
-
+  escrowAddress    String?
 }

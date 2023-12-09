@@ -23,7 +23,7 @@ export default function DepositPage() {
                 <div className="flex w-full flex-col justify-center ">
                   <p className="flex flex-col items-center">
                     <span>How much do you want to deposit?</span>
-                    <span>(min amount is 0.01 JUSDC)</span>
+                    <span>(min amount is 10 JUSDC)</span>
                   </p>
                   {/* Deposit form */}
                   <DepositJUSDCForm />

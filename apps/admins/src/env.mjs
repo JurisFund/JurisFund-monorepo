@@ -16,6 +16,9 @@ const server = z.object({
     // VERCEL_URL doesn't include `https` so it cant be validated as a URL
     process.env.VERCEL ? z.string().min(1) : z.string().url(),
   ),
+  SAFE_PRIVATE_KEY: z.string().min(1),
+  RPC_URL_SEPOLIA: z.string().url(),
+  RPC_URL_FUJI: z.string().url(),
   // Add `.min(1) on ID and SECRET if you want to make sure they're not empty
   // DISCORD_CLIENT_ID: z.string(),
   // DISCORD_CLIENT_SECRET: z.string(),
@@ -52,6 +55,9 @@ const processEnv = {
   NEXTAUTH_URL: process.env["NEXTAUTH_URL"],
   NEXT_PUBLIC_WALLETCONNECTCLOUD_PROJECT_ID:
     process.env["NEXT_PUBLIC_WALLETCONNECTCLOUD_PROJECT_ID"],
+  SAFE_PRIVATE_KEY: process.env["SAFE_PRIVATE_KEY"],
+  RPC_URL_SEPOLIA: process.env["RPC_URL_SEPOLIA"],
+  RPC_URL_FUJI: process.env["RPC_URL_FUJI"],
   // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
 };
 

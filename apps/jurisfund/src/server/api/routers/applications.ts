@@ -42,6 +42,19 @@ export const applicationsRouter = createTRPCRouter({
       }),
     )
     .mutation(async ({ input, ctx }) => {
+      const lastEntry = await ctx.prisma.borrowersTable.findMany({
+        select: {
+          caseNumber: true,
+        },
+        orderBy: {
+          applicationFillingDate: "desc",
+        },
+        take: 1,
+      });
+
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      const newCaseNumber = parseInt(lastEntry[0]!.caseNumber) + 1;
+
       return await ctx.prisma.borrowersTable.create({
         data: {
           firstName: input.firstName,
@@ -55,8 +68,9 @@ export const applicationsRouter = createTRPCRouter({
           lawyerName: input.lawyerName,
           expectedSettlementAmount: input.expectedSettlementAmount,
           walletAddress: input.walletAddress,
-          caseNumber: "01",
-          userId: "656345522cd7c56e95aaed85", // ctx.session.user.id,
+          caseNumber: newCaseNumber.toString(),
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          userId: ctx.session!.user.id, //"656345522cd7c56e95aaed85", // ctx.session.user.id,
         },
       });
     }),
