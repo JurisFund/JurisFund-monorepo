@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useDebounce } from "usehooks-ts";
+import { parseUnits } from "viem";
 import {
   type Address,
   useContractWrite,
@@ -8,7 +9,7 @@ import {
   useWaitForTransaction,
 } from "wagmi";
 
-import { jurisFundAbi } from "@/JurisFund.abi";
+import { JurisFundDiamondProxyAbi } from "@/JurisFundDiamondProxy.abi";
 
 const DepositJUSDCForm = () => {
   const [amountToDeposit, setAmountToDeposit] = useState<string>("0");
@@ -17,10 +18,9 @@ const DepositJUSDCForm = () => {
 
   const { config } = usePrepareContractWrite({
     address: "0x2FDbD499ff0ACE66a9884572c88d7bb899118336",
-    abi: jurisFundAbi,
+    abi: JurisFundDiamondProxyAbi,
     functionName: "stake",
-    // @ts-expect-error argument should be bigint and not int
-    args: [parseInt(debouncedAmountToDeposit)],
+    args: [false, parseUnits(debouncedAmountToDeposit, 6)],
     enabled: Boolean(debouncedAmountToDeposit),
   });
 
@@ -68,7 +68,7 @@ const DepositJUSDCForm = () => {
         <button
           type="button"
           onClick={() => {
-            if (depositWriteFn !== undefined) depositWriteFn();
+            depositWriteFn ? depositWriteFn() : null;
           }}
           disabled={
             debouncedAmountToDeposit === "0" || debouncedAmountToDeposit === "" || isLoading

@@ -31,5 +31,4 @@ function MyApp(
     </ThemeProvider>
   );
 }
-
 export default api.withTRPC(MyApp);
