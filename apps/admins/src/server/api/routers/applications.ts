@@ -67,7 +67,7 @@ export const applicationsRouter = createTRPCRouter({
         loanAmount: z.string(),
         interestRate: z.string(),
         lawyerWalletAddress: z.string(),
-        adminReview: z.string(),
+        adminReview: z.string(), // accepted or rejected value
       }),
     )
     .mutation(async ({ input, ctx }) => {

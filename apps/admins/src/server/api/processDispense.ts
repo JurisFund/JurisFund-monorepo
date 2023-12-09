@@ -1,14 +1,21 @@
+import { ethers, utils } from "ethers";
 import { ObjectId } from "mongodb";
 import Web3 from "web3";
 
+import { env } from "@/env.mjs";
+
 import { contractAbi } from "../../cron/Contract.abi";
 import { getDB } from "../../cron/db";
+import { JurisEscrowAbi } from "../../cron/JurisEscrow.abi";
+// import { jurisfundAbi } from "../../cron/JurisFund.abi";
 
 // MongoDB and Ethereum configuration
 const contractABI = contractAbi;
 const privateKey = process.env["PRIVATE_KEY"] ?? ""; // Should be securely managed
 const tokenAddress = "0x720e1514657ef85C3db3f4419c6987db3B4F2C56";
 const contractAddress = "0x720e1514657ef85C3db3f4419c6987db3B4F2C56";
+const jurisfundContractAddress = "0x2FDbD499ff0ACE66a9884572c88d7bb899118336";
+
 // Set up Web3
 const web3 = new Web3(new Web3.providers.HttpProvider(process.env["RPC_PROVIDER_URL"] ?? ""));
 const db = await getDB();
@@ -53,13 +60,23 @@ async function signAndSendTransaction(plaintiff: string, amount: string): Promis
 }
 
 // Function to update the borrower in MongoDB
-async function updateBorrower(id: string, transactionHash: string): Promise<void> {
+async function updateBorrower(
+  id: string,
+  transactionHash: string,
+  newEscrowAddress: string,
+): Promise<void> {
   try {
     const now = new Date();
     const objectId = new ObjectId(id);
     await collection.updateOne(
       { _id: objectId },
-      { $set: { payoffDate: now, transactionHash: transactionHash } },
+      {
+        $set: {
+          loanInssuanseDate: now,
+          transactionHash: transactionHash,
+          escrowAddress: newEscrowAddress,
+        },
+      },
     );
   } catch (error) {
     console.error("Error updating borrower:", error);
@@ -78,7 +95,19 @@ export async function processBorrowers(): Promise<void> {
           borrower.walletAddress,
           borrower.loanAmount ?? "",
         );
-        await updateBorrower(borrower.id, transactionHash);
+
+        const newEscrowAddress = await getInitializationDataAndDeployEscrow(
+          borrower.loanAmount ?? "",
+          borrower.fixedAPY ?? "",
+          borrower.walletAddress,
+          borrower.lawyerWalletAddress ?? "",
+          "0x5Ddf646e7beC68243cFbB61bB6E90c826c6F5CAD", // Privileged address - change it to env vars
+          "0xD857A3CD0AF9Ab5e1c3298A44A81A18754161DAc", // JUSDC address - change it to env vars
+        );
+
+        console.log({ newEscrowAddress });
+
+        await updateBorrower(borrower.id, transactionHash, newEscrowAddress);
       } catch (error) {
         console.error(`Error processing borrower ${borrower.id}:`, error);
         // Decide whether to continue or stop
@@ -115,3 +144,37 @@ interface Borrower {
   accruedInterest?: string;
   payoffDate?: Date;
 }
+
+const getInitializationDataAndDeployEscrow = async (
+  borrowerLoanAmount: string,
+  apr: string,
+  borrowerAddress: string,
+  lawyerWalletAddress: string,
+  safeAddress: string,
+  usdcAddress: string,
+) => {
+  const iface = new utils.Interface(JurisEscrowAbi);
+
+  const callData = iface.encodeFunctionData("initialize", [
+    borrowerLoanAmount, // loan amount
+    apr, // the loan
+    borrowerAddress, // borrowers address
+    lawyerWalletAddress,
+    safeAddress, // the privileged address
+    usdcAddress, // JUSDC address
+  ]);
+
+  const provider = new ethers.providers.JsonRpcProvider(env.RPC_URL_FUJI , 1);
+  const signer = new ethers.Wallet(env.SAFE_PRIVATE_KEY , provider);
+  const jurisFundContract = new ethers.Contract(jurisfundContractAddress, JurisEscrowAbi, signer);
+
+  // @ts-expect-error TODO: fix this
+  const escrowAddress = await jurisFundContract.deployEscrow(
+    callData,
+    "0xef50095700000000000000000000000000000000000000000000000000000000",
+  );
+
+  // const data = jurisFundContract.methods.(tokenAddress, plaintiff, BigInt(amount)).encodeABI();
+
+  return escrowAddress as string;
+};
