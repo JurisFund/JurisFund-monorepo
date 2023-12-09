@@ -8,7 +8,7 @@ import {
   useWaitForTransaction,
 } from "wagmi";
 
-import { JuriFundEscrowAbi } from "@/JurisFundEscrow.abi";
+import { jurisFundAbi } from "@/JurisFund.abi";
 
 const DepositJUSDCForm = () => {
   const [amountToDeposit, setAmountToDeposit] = useState<string>("0");
@@ -16,9 +16,9 @@ const DepositJUSDCForm = () => {
   const debouncedAmountToDeposit = useDebounce(amountToDeposit, 500);
 
   const { config } = usePrepareContractWrite({
-    address: "0xE8db6C75cd7482c7dD2536E84C2B5162c2Be2578",
-    abi: JuriFundEscrowAbi,
-    functionName: "deposit",
+    address: "0x2FDbD499ff0ACE66a9884572c88d7bb899118336",
+    abi: jurisFundAbi,
+    functionName: "stake",
     // @ts-expect-error argument should be bigint and not int
     args: [parseInt(debouncedAmountToDeposit)],
     enabled: Boolean(debouncedAmountToDeposit),
