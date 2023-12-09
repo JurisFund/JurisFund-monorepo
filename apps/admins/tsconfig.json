@@ -1,6 +1,7 @@
 {
   "extends": "typescript-config/next.json",
   "compilerOptions": {
+    "noPropertyAccessFromIndexSignature": false,
     "baseUrl": "./src",
     "paths": {
       "@/*": ["*"]
