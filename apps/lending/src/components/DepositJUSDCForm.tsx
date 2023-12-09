@@ -1,35 +1,67 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import { utils } from "ethers";
+import React, { useEffect, useState } from "react";
 import { useDebounce } from "usehooks-ts";
-import { parseUnits } from "viem";
 import {
   type Address,
+  useAccount,
+  useBalance,
+  useContractRead,
   useContractWrite,
   usePrepareContractWrite,
   useWaitForTransaction,
 } from "wagmi";
 
-import { JurisFundDiamondProxyAbi } from "@/JurisFundDiamondProxy.abi";
+import { JurisFundPoolAbi } from "@/abi/JurisFundPool.abi";
+import { JusdcAbi } from "@/abi/JUSD.abi";
+
+const tokenAddress = "0xD857A3CD0AF9Ab5e1c3298A44A81A18754161DAc";
+const jurisfund = "0x2FDbD499ff0ACE66a9884572c88d7bb899118336";
 
 const DepositJUSDCForm = () => {
+  const { address, isConnected } = useAccount();
   const [amountToDeposit, setAmountToDeposit] = useState<string>("0");
   const [dataHash, setDataHash] = useState<Address>("0x0");
   const debouncedAmountToDeposit = useDebounce(amountToDeposit, 500);
+  const [userJusdBalance, setUserJusdBalance] = useState<string>("0");
 
   const { config } = usePrepareContractWrite({
-    address: "0x2FDbD499ff0ACE66a9884572c88d7bb899118336",
-    abi: JurisFundDiamondProxyAbi,
+    address: jurisfund,
+    abi: JurisFundPoolAbi,
     functionName: "stake",
-    args: [false, parseUnits(debouncedAmountToDeposit, 6)],
-    enabled: Boolean(debouncedAmountToDeposit),
+    args: [true, utils.parseUnits(debouncedAmountToDeposit || "0", 6).toBigInt()],
+    enabled: Boolean(debouncedAmountToDeposit !== "0"),
+  });
+
+  const { data: allowance } = useContractRead({
+    address: tokenAddress,
+    abi: JusdcAbi,
+    functionName: "allowance",
+    args: [address!, jurisfund],
+    enabled: isConnected && address !== undefined,
+  });
+
+  // approve
+  const { write: approveWriteFn, isLoading: approveIsLoading } = useContractWrite({
+    address: tokenAddress,
+    abi: JusdcAbi,
+    functionName: "approve",
+    args: [jurisfund, utils.parseUnits(userJusdBalance, 6).toBigInt()],
+  });
+
+  useBalance({
+    address: address!,
+    token: tokenAddress,
+    onSuccess(data) {
+      setUserJusdBalance(data.formatted);
+    },
+    enabled: isConnected && address !== undefined,
   });
 
   const { data, write: depositWriteFn } = useContractWrite(config);
 
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/prefer-optional-chain
-    if (data !== undefined && data.hash !== undefined) {
-      setDataHash(data.hash); // check this - verify if it works - we are avoiding the undefined value for the data.hash
+    if (data?.hash !== undefined) {
+      setDataHash(data.hash);
     }
   }, [data]);
 
@@ -37,6 +69,21 @@ const DepositJUSDCForm = () => {
     hash: dataHash,
     enabled: Boolean(dataHash !== "0x0"),
   });
+
+  const processDeposit = () => {
+    if (!isConnected || address == undefined) {
+      return;
+    }
+
+    if (parseInt(allowance?.toString() ?? "0") < parseInt(debouncedAmountToDeposit)) {
+      approveWriteFn();
+      return;
+    }
+
+    if (!approveIsLoading) {
+      if (depositWriteFn !== undefined) depositWriteFn();
+    }
+  };
 
   return (
     <form className="mt-5">
@@ -53,11 +100,11 @@ const DepositJUSDCForm = () => {
       />
       {/* Show JUSDC balance here and show it with a MAX button */}
       <div className="flex w-full items-center justify-between px-4">
-        <span className="text-md text-gray-400 ">Balance: 0</span>
+        <span className="text-md text-gray-400 ">Balance: {userJusdBalance}</span>
         <button
           type="button"
           onClick={() => {
-            setAmountToDeposit("100"); // TODO: get balance and set the value here
+            setAmountToDeposit(userJusdBalance);
           }}
           className="my-3 inline-block h-8 w-12 rounded-xl bg-green-700 text-center text-sm text-white transition-all duration-150 hover:bg-gray-700"
         >
@@ -67,9 +114,7 @@ const DepositJUSDCForm = () => {
       <div className="flex w-full flex-col items-center justify-center">
         <button
           type="button"
-          onClick={() => {
-            depositWriteFn ? depositWriteFn() : null;
-          }}
+          onClick={processDeposit}
           disabled={
             debouncedAmountToDeposit === "0" || debouncedAmountToDeposit === "" || isLoading
           }
@@ -78,7 +123,13 @@ const DepositJUSDCForm = () => {
           {isLoading ? (
             <div className="flex items-center justify-center ">Loading ...</div>
           ) : (
-            "Confirm Deposit"
+            `
+           ${
+             parseInt(allowance?.toString() ?? "0") < parseInt(debouncedAmountToDeposit)
+               ? "Approve"
+               : "Confirm Deposit"
+           }
+           `
           )}
         </button>
         {/* Show deposit time 12 months here */}
@@ -86,13 +137,17 @@ const DepositJUSDCForm = () => {
           <span className="text-md text-gray-400 ">Deposit time: 12 months</span>
         </div>
         {data !== undefined && depositIsSuccess ? (
-          <div>
-            Successfully minted your NFT!
-            <div>
-              {/* eslint-disable-next-line @typescript-eslint/restrict-template-expressions */}
-              <a href={`https://sepolia.etherscan.io/tx/${data.hash}`}>Sepolia Etherscan</a>
-            </div>
-          </div>
+          <p>
+            Successfully deposited!
+            <span>
+              <a
+                className="ml-2 text-blue-600 underline"
+                href={`https://testnet.snowtrace.io/tx/${data.hash}`}
+              >
+                view on Snowtrace
+              </a>
+            </span>
+          </p>
         ) : null}
       </div>
     </form>

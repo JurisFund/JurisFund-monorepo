@@ -24,6 +24,7 @@
     "@trpc/client": "^10.44.1",
     "@trpc/next": "^10.44.1",
     "@trpc/server": "^10.44.1",
+    "@wagmi/core": "^1.4.10",
     "clsx": "2.0.0",
     "database": "workspace:*",
     "ethers": "5",
