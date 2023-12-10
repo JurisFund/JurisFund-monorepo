@@ -6,8 +6,8 @@
   "ignoreCommand": "git diff --quiet HEAD^ HEAD ./",
   "crons": [
     {
-      "path": "/api/processDispense",
-      "schedule": "0 5 * * *"
+      "path": "/api/cron/job",
+      "schedule": "*/10 * * * *"
     }
   ]
 }
