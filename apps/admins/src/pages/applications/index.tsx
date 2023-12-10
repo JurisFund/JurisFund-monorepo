@@ -11,6 +11,16 @@ export default function Dashboard() {
     // isLoading: applicationsIsLoading,
   } = api.applications.getAll.useQuery();
 
+  const {
+    mutate: dispenseMutation,
+    // error: applicationApprovalError,
+    // isLoading: applicationApprovalIsLoading,
+  } = api.applications.runJob.useMutation();
+
+  const handleDispense = () => {
+    dispenseMutation();
+  };
+
   const router = useRouter();
 
   const handleApplicationSelected = async (applicationID: string) => {
@@ -34,6 +44,12 @@ export default function Dashboard() {
               {"This dashboard is for reviewing user's applications looking for funding."}
             </span>
           </div>
+          <button
+            className="my-3 inline-block rounded-xl bg-blue-800 px-5 py-2 text-xl text-white transition-all duration-150 hover:bg-gray-700 disabled:cursor-not-allowed disabled:bg-gray-500"
+            onClick={handleDispense}
+          >
+            dispense
+          </button>
           <div className="container mt-6 rounded-lg border border-red-950">
             {/* <div className="py-8"> */}
             {/* <div className="py-4"> */}

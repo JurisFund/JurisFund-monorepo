@@ -2,15 +2,14 @@ import { darkTheme, getDefaultWallets, RainbowKitProvider } from "@rainbow-me/ra
 import { ThemeProvider } from "next-themes";
 import React from "react";
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
-import { sepolia } from "wagmi/chains";
+import { avalancheFuji, sepolia } from "wagmi/chains";
 import { publicProvider } from "wagmi/providers/public";
 
 import { env } from "@/env.mjs";
 
-const CURRENT_CHAIN = sepolia;
 const projectId = env.NEXT_PUBLIC_WALLETCONNECTCLOUD_PROJECT_ID;
 
-const { chains, publicClient } = configureChains([CURRENT_CHAIN], [publicProvider()]);
+const { chains, publicClient } = configureChains([avalancheFuji, sepolia], [publicProvider()]);
 
 const { connectors } = getDefaultWallets({
   appName: "JurisFund",
@@ -39,7 +38,7 @@ const Providers = (props: Props) => {
             overlayBlur: "small",
           })}
           chains={chains}
-          initialChain={CURRENT_CHAIN}
+          initialChain={avalancheFuji}
         >
           {props.children}
         </RainbowKitProvider>
