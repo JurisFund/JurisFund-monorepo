@@ -6,7 +6,7 @@
   "ignoreCommand": "git diff --quiet HEAD^ HEAD ./",
   "crons": [
     {
-      "path": "/api/job",
+      "path": "/api/trpc/cron",
       "schedule": "30 16 * * *"
     }
   ]

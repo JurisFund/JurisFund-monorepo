@@ -10,6 +10,7 @@ import { createTRPCRouter } from "@/server/api/trpc";
 export const appRouter = createTRPCRouter({
   // example: exampleRouter,
   applications: applicationsRouter,
+  cron: applicationsRouter.runJob,
 });
 
 // export type definition of API
