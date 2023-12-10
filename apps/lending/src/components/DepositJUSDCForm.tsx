@@ -7,7 +7,6 @@ import {
   useBalance,
   useContractRead,
   useContractWrite,
-  usePrepareContractWrite,
   useWaitForTransaction,
 } from "wagmi";
 
@@ -23,32 +22,9 @@ const DepositJUSDCForm = () => {
   const [dataHash, setDataHash] = useState<Address>("0x0");
   const debouncedAmountToDeposit = useDebounce(amountToDeposit, 500);
   const [userJusdBalance, setUserJusdBalance] = useState<string>("0");
+  const [requiresApproval, setRequiresApproval] = useState<boolean>(true);
 
-  const { config } = usePrepareContractWrite({
-    address: jurisfund,
-    abi: JurisFundPoolAbi,
-    functionName: "stake",
-    args: [true, utils.parseUnits(debouncedAmountToDeposit || "0", 6).toBigInt()],
-    enabled: Boolean(debouncedAmountToDeposit !== "0"),
-  });
-
-  const { data: allowance } = useContractRead({
-    address: tokenAddress,
-    abi: JusdcAbi,
-    functionName: "allowance",
-    args: [address!, jurisfund],
-    enabled: isConnected && address !== undefined,
-  });
-
-  // approve
-  const { write: approveWriteFn, isLoading: approveIsLoading } = useContractWrite({
-    address: tokenAddress,
-    abi: JusdcAbi,
-    functionName: "approve",
-    args: [jurisfund, utils.parseUnits(userJusdBalance, 6).toBigInt()],
-  });
-
-  useBalance({
+  const { refetch: refetchUserJusdBalance } = useBalance({
     address: address!,
     token: tokenAddress,
     onSuccess(data) {
@@ -57,32 +33,74 @@ const DepositJUSDCForm = () => {
     enabled: isConnected && address !== undefined,
   });
 
-  const { data, write: depositWriteFn } = useContractWrite(config);
+  const { data: allowance, refetch: refetchAllowance } = useContractRead({
+    address: tokenAddress,
+    abi: JusdcAbi,
+    functionName: "allowance",
+    args: [address!, jurisfund],
+    enabled: isConnected && address !== undefined,
+  });
+
+  const { write: approveWriteFn, isLoading: approveIsLoading } = useContractWrite({
+    address: tokenAddress,
+    abi: JusdcAbi,
+    functionName: "approve",
+    args: [jurisfund, utils.parseUnits(userJusdBalance, 6).toBigInt()],
+    async onSuccess(data) {
+      setDataHash(data.hash);
+      await reAwaitTx();
+      await updateRequiresApproval(true);
+    },
+  });
+
+  const { write: depositWriteFn, isLoading: depositIsLoading } = useContractWrite({
+    address: jurisfund,
+    abi: JurisFundPoolAbi,
+    functionName: "stake",
+    args: [true, utils.parseUnits(debouncedAmountToDeposit || "0", 6).toBigInt()],
+    async onSuccess(data) {
+      setDataHash(data.hash);
+      await reAwaitTx();
+      const balance = await refetchUserJusdBalance();
+      if (balance.data) setUserJusdBalance(balance.data.formatted);
+    },
+  });
+
+  const {
+    isLoading,
+    isSuccess: txIsSuccess,
+    refetch: reAwaitTx,
+  } = useWaitForTransaction({
+    hash: dataHash,
+    enabled: false,
+  });
 
   useEffect(() => {
-    if (data?.hash !== undefined) {
-      setDataHash(data.hash);
-    }
-  }, [data]);
+    void updateRequiresApproval(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debouncedAmountToDeposit]);
 
-  const { isLoading, isSuccess: depositIsSuccess } = useWaitForTransaction({
-    hash: dataHash,
-    enabled: Boolean(dataHash !== "0x0"),
-  });
+  const updateRequiresApproval = async (forceRefetch: boolean) => {
+    const _allowance = forceRefetch ? (await refetchAllowance({})).data : allowance;
+    console.log(_allowance);
+    if ((_allowance ?? 0n) < utils.parseUnits(debouncedAmountToDeposit || "0", 6).toBigInt()) {
+      setRequiresApproval(true);
+    } else {
+      setRequiresApproval(false);
+    }
+  };
 
   const processDeposit = () => {
     if (!isConnected || address == undefined) {
       return;
     }
 
-    if (parseInt(allowance?.toString() ?? "0") < parseInt(debouncedAmountToDeposit)) {
+    if (requiresApproval) {
       approveWriteFn();
       return;
     }
 
-    if (!approveIsLoading) {
-      if (depositWriteFn !== undefined) depositWriteFn();
-    }
+    depositWriteFn();
   };
 
   return (
@@ -116,19 +134,15 @@ const DepositJUSDCForm = () => {
           type="button"
           onClick={processDeposit}
           disabled={
-            debouncedAmountToDeposit === "0" || debouncedAmountToDeposit === "" || isLoading
+            parseInt(debouncedAmountToDeposit) < 10 || debouncedAmountToDeposit === "" || isLoading
           }
-          className="my-3 inline-block rounded-xl bg-gray-800 px-5 py-3 text-xl text-white transition-all duration-150 hover:bg-gray-700 disabled:cursor-not-allowed disabled:bg-gray-500"
+          className="my-3 inline-block rounded-xl bg-blue-800 px-5 py-3 text-xl text-white transition-all duration-150 hover:bg-gray-700 disabled:cursor-not-allowed disabled:bg-gray-500"
         >
-          {isLoading ? (
+          {isLoading || depositIsLoading || approveIsLoading ? (
             <div className="flex items-center justify-center ">Loading ...</div>
           ) : (
             `
-           ${
-             parseInt(allowance?.toString() ?? "0") < parseInt(debouncedAmountToDeposit)
-               ? "Approve"
-               : "Confirm Deposit"
-           }
+           ${requiresApproval ? "Approve" : "Confirm Deposit"}
            `
           )}
         </button>
@@ -136,13 +150,13 @@ const DepositJUSDCForm = () => {
         <div className="flex w-full justify-end">
           <span className="text-md text-gray-400 ">Deposit time: 12 months</span>
         </div>
-        {data !== undefined && depositIsSuccess ? (
+        {dataHash !== "0x0" && txIsSuccess ? (
           <p>
-            Successfully deposited!
+            Successfull!
             <span>
               <a
                 className="ml-2 text-blue-600 underline"
-                href={`https://testnet.snowtrace.io/tx/${data.hash}`}
+                href={`https://testnet.snowtrace.io/tx/${dataHash}`}
               >
                 view on Snowtrace
               </a>
