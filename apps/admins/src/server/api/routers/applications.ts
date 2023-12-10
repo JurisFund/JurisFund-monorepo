@@ -2,6 +2,7 @@
 // ========================================================
 import { z } from "zod";
 
+import { handle } from "@/server/api/routers/utils/utils";
 import { createTRPCRouter, /* protectedProcedure, */ publicProcedure } from "@/server/api/trpc";
 
 // Router
@@ -83,4 +84,28 @@ export const applicationsRouter = createTRPCRouter({
         },
       });
     }),
+  runJob: publicProcedure.mutation(async ({ ctx }) => {
+    const applications = await ctx.prisma.borrowersTable.findMany({
+      where: {
+        applicationStatus: "Approved",
+        loanInssuanseDate: null,
+      },
+    });
+
+    for (const borrower of applications) {
+      const result = await handle(borrower);
+
+      if (result) {
+        await ctx.prisma.borrowersTable.update({
+          where: {
+            id: borrower.id,
+          },
+          data: {
+            loanInssuanseDate: new Date(),
+            escrowAddress: result.escrowAddress,
+          },
+        });
+      }
+    }
+  }),
 });
