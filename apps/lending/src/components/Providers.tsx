@@ -2,12 +2,12 @@ import { darkTheme, getDefaultWallets, RainbowKitProvider } from "@rainbow-me/ra
 import { ThemeProvider } from "next-themes";
 import React from "react";
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
-import { avalancheFuji, sepolia } from "wagmi/chains";
+import { avalancheFuji } from "wagmi/chains";
 import { publicProvider } from "wagmi/providers/public";
 
 import { env } from "@/env.mjs";
 
-const CURRENT_CHAINS = [sepolia, avalancheFuji];
+const CURRENT_CHAINS = [avalancheFuji];
 const projectId = env.NEXT_PUBLIC_WALLETCONNECTCLOUD_PROJECT_ID;
 
 const { chains, publicClient } = configureChains(CURRENT_CHAINS, [publicProvider()]);

@@ -1,6 +1,8 @@
 import { type Db, MongoClient } from "mongodb";
 
-const uri = process.env["DATABASE_URL"] ?? "";
+import { env } from "@/env.mjs";
+
+const uri = env.DATABASE_URL;
 
 export const getDB = async (): Promise<Db> => {
   const client = new MongoClient(uri);
