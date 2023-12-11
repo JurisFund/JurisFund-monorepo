@@ -13,6 +13,9 @@
     "storybook:build": "storybook build"
   },
   "dependencies": {
+    "@dynamic-labs/ethereum": "^0.19.5",
+    "@dynamic-labs/sdk-react-core": "^0.19.5",
+    "@dynamic-labs/wagmi-connector": "^0.19.5",
     "@headlessui/react": "1.7.17",
     "@t3-oss/env-nextjs": "^0.7.1",
     "@tanstack/react-query": "^4.35.3",

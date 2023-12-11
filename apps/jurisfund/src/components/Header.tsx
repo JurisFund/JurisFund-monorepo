@@ -1,4 +1,5 @@
 // import { ConnectWallet, useAddress, useWallet } from "@thirdweb-dev/react";
+import { DynamicWidget } from "@dynamic-labs/sdk-react-core";
 import NextImage from "next/image";
 import type { FunctionComponent /*, useEffect, useMemo, useState */ } from "react";
 import { Container } from "ui";
@@ -66,13 +67,7 @@ const PageHeader: FunctionComponent = () => {
             />
           }
         />
-        {/* <ConnectWallet
-          theme={"light"}
-          auth={{ loginOptional: false }}
-          switchToActiveChain={true}
-          modalSize={"compact"}
-          welcomeScreen={{}}
-        /> */}
+        <DynamicWidget />
       </Container>
     </header>
   );

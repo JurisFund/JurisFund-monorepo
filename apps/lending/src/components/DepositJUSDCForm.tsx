@@ -66,11 +66,7 @@ const DepositJUSDCForm = () => {
     },
   });
 
-  const {
-    isLoading,
-    isSuccess: txIsSuccess,
-    refetch: reAwaitTx,
-  } = useWaitForTransaction({
+  const { isLoading, refetch: reAwaitTx } = useWaitForTransaction({
     hash: dataHash,
     enabled: false,
   });
@@ -150,15 +146,15 @@ const DepositJUSDCForm = () => {
         <div className="flex w-full justify-end">
           <span className="text-md text-gray-400 ">Deposit time: 12 months</span>
         </div>
-        {dataHash !== "0x0" && txIsSuccess ? (
+        {dataHash !== "0x0" ? (
           <p>
-            Successfull!
+            success!
             <span>
               <a
                 className="ml-2 text-blue-600 underline"
                 href={`https://testnet.snowtrace.io/tx/${dataHash}`}
               >
-                view on Snowtrace
+                view on block explorer
               </a>
             </span>
           </p>
