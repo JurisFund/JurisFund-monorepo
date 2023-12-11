@@ -1,8 +1,9 @@
-import { ConnectWallet, useAddress, useWallet } from "@thirdweb-dev/react";
+import { DynamicWidget } from "@dynamic-labs/sdk-react-core";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import * as React from "react";
 
+import { useAppContext } from "@/contexts/AppContext";
 import { api } from "@/utils/api";
 
 export default function BorrowerApplicationFormPage() {
@@ -20,24 +21,13 @@ export default function BorrowerApplicationFormPage() {
 
   const router = useRouter();
 
-  const address = useAddress();
-  const connectedWallet = useWallet("embeddedWallet");
+  const { connectedAddress, connectedEmbeddedWallet, connectedEmail } = useAppContext();
 
   React.useEffect(() => {
-    if (connectedWallet) {
-      connectedWallet
-        .getEmail()
-        .then((email) => {
-          if (email !== undefined) {
-            console.log("wallet email: ", { email });
-            setEmail(email);
-          }
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+    if (connectedEmbeddedWallet !== "" && connectedEmail !== "") {
+      setEmail(connectedEmail);
     }
-  }, [connectedWallet]);
+  }, [connectedEmail, connectedEmbeddedWallet]);
 
   const { mutate: applicationsAddMutate /*, isLoading: applicationsAddIsLoading */ } =
     api.applications.add.useMutation({
@@ -77,7 +67,7 @@ export default function BorrowerApplicationFormPage() {
           className="flex flex-col gap-4 rounded-md border-2 border-orange-300 bg-orange-100 p-4"
           onSubmit={(event) => {
             event.preventDefault();
-            if (address === undefined) return;
+            if (connectedEmbeddedWallet === undefined) return;
             applicationsAddMutate({
               firstName,
               lastName,
@@ -89,7 +79,7 @@ export default function BorrowerApplicationFormPage() {
               lawFirmName,
               lawyerName,
               expectedSettlementAmount,
-              walletAddress: address,
+              walletAddress: connectedEmbeddedWallet ?? connectedAddress,
             });
             setFirstName("");
             setLastName("");
@@ -308,8 +298,11 @@ export default function BorrowerApplicationFormPage() {
               }}
             />
           </div>
-          {address === undefined ? (
-            <ConnectWallet />
+          {connectedAddress === "" ||
+          connectedEmbeddedWallet === "" ||
+          connectedAddress === "0x0" ||
+          connectedEmail === "" ? (
+            <DynamicWidget />
           ) : (
             <button
               type="submit"

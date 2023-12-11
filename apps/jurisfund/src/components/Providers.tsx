@@ -6,6 +6,7 @@ import { SessionProvider } from "next-auth/react";
 import { ThemeProvider } from "next-themes";
 import React from "react";
 
+import { AppContextProvider } from "@/contexts/AppContextProvider";
 import { env } from "@/env.mjs";
 interface Props {
   children: React.ReactNode;
@@ -22,7 +23,9 @@ const Providers = (props: Props) => {
             walletConnectors: [EthereumWalletConnectors],
           }}
         >
-          <DynamicWagmiConnector>{props.children}</DynamicWagmiConnector>
+          <DynamicWagmiConnector>
+            <AppContextProvider>{props.children}</AppContextProvider>
+          </DynamicWagmiConnector>
         </DynamicContextProvider>
       </SessionProvider>
     </ThemeProvider>
